@@ -1,65 +1,177 @@
-import Image from "next/image";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen" style={{ backgroundColor: "var(--color-bg)" }}>
+      <Navbar />
+
+      {/* ───── HERO ───── */}
+      <section style={{ backgroundColor: "var(--color-bg-soft)" }}>
+        <div className="max-w-6xl mx-auto px-8 py-20 lg:py-28">
+          <div className="max-w-2xl mx-auto text-center animate-fadeIn">
+            {/* Badge */}
+            <div
+              className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
+              style={{
+                backgroundColor: "rgba(115,0,190,0.08)",
+                color: "var(--color-purple)",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Coming Soon — Join the Waitlist
+            </div>
+
+            <h1
+              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight mb-6"
+              style={{ color: "var(--color-text-primary)" }}
             >
-              Learning
-            </a>{" "}
-            center.
+              Exit your debt,{" "}
+              <span style={{ color: "var(--color-purple)" }}>on your terms.</span>
+            </h1>
+
+            <p
+              className="text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8"
+              style={{ color: "var(--color-text-secondary)" }}
+            >
+              India&apos;s smartest debt management platform. Understand, restructure,
+              and become debt-free — faster. Sign up to be the first to know when we launch.
+            </p>
+
+            {/* CTA */}
+            <Link
+              href="/waitlist"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-[0.98]"
+              style={{ backgroundColor: "var(--color-purple)" }}
+            >
+              Join the Waitlist →
+            </Link>
+
+            <p className="text-xs mt-4" style={{ color: "var(--color-text-muted)" }}>
+              Be among the first 10,000 to get early access.
+            </p>
+
+            {/* Trust pills */}
+            <div className="flex flex-wrap justify-center gap-3 mt-10">
+              {["No CIBIL impact", "256-bit encrypted", "Completely free"].map((t) => (
+                <span
+                  key={t}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{
+                    backgroundColor: "var(--color-bg-card)",
+                    border: "1px solid var(--color-border)",
+                    color: "var(--color-text-secondary)",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                  }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: "var(--color-purple)" }}
+                  />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── FEATURES ───── */}
+      <section className="max-w-6xl mx-auto px-8 py-20 lg:py-24">
+        <div className="text-center mb-14 animate-fadeIn">
+          <p
+            className="text-xs font-bold uppercase tracking-widest mb-3"
+            style={{ color: "var(--color-purple)" }}
+          >
+            What you&apos;ll get
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <h2
+            className="text-3xl sm:text-4xl font-bold"
+            style={{ color: "var(--color-text-primary)" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Everything to manage your debt
+          </h2>
         </div>
-      </main>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+              ),
+              title: "Debt Health Score",
+              desc: "Know exactly where you stand with a comprehensive debt health assessment.",
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              ),
+              title: "Creditor Shield",
+              desc: "Stop harassment calls. Get professional support to deal with creditors.",
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              ),
+              title: "Smart Settlement",
+              desc: "Negotiate better terms and save thousands on interest payments.",
+            },
+          ].map((feature, i) => (
+            <div
+              key={feature.title}
+              className={`rounded-2xl p-7 hover-lift animate-slideUp stagger-${i + 1}`}
+              style={{
+                backgroundColor: "var(--color-bg-card)",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
+                border: "1px solid var(--color-border)",
+              }}
+            >
+              <span style={{ color: "var(--color-purple)" }}>{feature.icon}</span>
+              <h3
+                className="text-base font-bold mt-4 mb-2"
+                style={{ color: "var(--color-text-primary)" }}
+              >
+                {feature.title}
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                {feature.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ───── BOTTOM CTA ───── */}
+      <section style={{ backgroundColor: "var(--color-bg-soft)" }}>
+        <div className="max-w-6xl mx-auto px-8 py-16 text-center">
+          <h2
+            className="text-2xl sm:text-3xl font-bold mb-3"
+            style={{ color: "var(--color-text-primary)" }}
+          >
+            Ready to take control of your debt?
+          </h2>
+          <p className="text-sm mb-6" style={{ color: "var(--color-text-secondary)" }}>
+            Join the waitlist today and be the first to know when we launch.
+          </p>
+          <Link
+            href="/waitlist"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-[0.98]"
+            style={{ backgroundColor: "var(--color-purple)" }}
+          >
+            Join the Waitlist →
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
