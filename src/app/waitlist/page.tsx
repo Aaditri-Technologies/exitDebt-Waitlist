@@ -13,6 +13,10 @@ export default function WaitlistPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
+    // Bot detection
+    const [honeypot, setHoneypot] = useState("");
+    const [formLoadedAt, setFormLoadedAt] = useState<number>(0);
+
     // Field-level errors
     const [nameError, setNameError] = useState("");
     const [mobileError, setMobileError] = useState("");
@@ -21,6 +25,7 @@ export default function WaitlistPage() {
 
     // Check sessionStorage for prior submission
     useEffect(() => {
+        setFormLoadedAt(Date.now());
         if (typeof window !== "undefined") {
             const wasSubmitted = sessionStorage.getItem("waitlist_submitted");
             if (wasSubmitted === "true") {
@@ -95,6 +100,8 @@ export default function WaitlistPage() {
                     mobile: mobile.trim(),
                     place: place.trim(),
                     totalDebt: debtNum,
+                    honeypot,
+                    formLoadedAt,
                 }),
             });
 
@@ -293,6 +300,17 @@ export default function WaitlistPage() {
                                         )}
 
                                         <form onSubmit={handleSubmit} className="space-y-4">
+                                            {/* Honeypot — hidden from humans, filled by bots */}
+                                            <div style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }} aria-hidden="true">
+                                                <input
+                                                    type="text"
+                                                    name="website"
+                                                    tabIndex={-1}
+                                                    autoComplete="off"
+                                                    value={honeypot}
+                                                    onChange={(e) => setHoneypot(e.target.value)}
+                                                />
+                                            </div>
                                             {/* Name */}
                                             <div>
                                                 <label
@@ -380,7 +398,7 @@ export default function WaitlistPage() {
                                                         setPlace(e.target.value);
                                                         if (e.target.value.trim()) setPlaceError("");
                                                     }}
-                                                    placeholder="Mumbai"
+                                                    placeholder="Surat"
                                                     maxLength={100}
                                                     className="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none focus:ring-2"
                                                     style={{

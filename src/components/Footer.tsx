@@ -82,7 +82,7 @@ export default function Footer() {
                                 support@exitdebt.in
                             </p>
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                Mumbai, India
+                                Surat, India
                             </p>
                         </div>
                     </div>

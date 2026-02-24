@@ -4,19 +4,23 @@ import { rateLimit } from "@/lib/rate-limit";
 import { sanitizeString, sanitizeDebt } from "@/lib/sanitize";
 import { getStateFromCity } from "@/lib/city-state";
 
+/** Minimum time (ms) a legitimate user would take to fill the form. */
+const MIN_FORM_DURATION_MS = 3000;
+
 /**
  * POST /api/waitlist
- * Accepts: { name, mobile, place, totalDebt }
- * Security: rate-limited, input sanitized, duplicate-checked.
+ * Accepts: { name, mobile, place, totalDebt, honeypot?, formLoadedAt? }
+ * Security: rate-limited, input sanitized, duplicate-checked,
+ *           honeypot + timing-based bot detection.
  */
 export async function POST(request: NextRequest) {
-    // ── Rate Limiting: 5 submissions per IP per 15 minutes ──
+    // ── Rate Limiting: 15 submissions per IP per 15 minutes ──
     const ip =
         request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
         request.headers.get("x-real-ip") ||
         "unknown";
 
-    const { allowed, remaining } = rateLimit(ip, 15, 15 * 60 * 1000);
+    const { allowed, remaining } = await rateLimit(ip, 15, 15 * 60 * 1000);
 
     if (!allowed) {
         return NextResponse.json(
@@ -43,7 +47,22 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const { name, mobile, place, totalDebt } = body;
+        const { name, mobile, place, totalDebt, honeypot, formLoadedAt } = body;
+
+        // ── Bot Detection ──
+        // Honeypot: hidden field that should always be empty
+        if (honeypot) {
+            // Return a fake success to not tip off the bot
+            return NextResponse.json({ success: true, id: 0 }, { status: 201 });
+        }
+
+        // Timing: reject submissions faster than a human could fill the form
+        if (formLoadedAt && typeof formLoadedAt === "number") {
+            const elapsed = Date.now() - formLoadedAt;
+            if (elapsed < MIN_FORM_DURATION_MS) {
+                return NextResponse.json({ success: true, id: 0 }, { status: 201 });
+            }
+        }
 
         // ── Validation ──
         const errors: string[] = [];
