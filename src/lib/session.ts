@@ -23,14 +23,16 @@ function getSessionPassword(): string {
   return secret;
 }
 
-export const SESSION_OPTIONS: SessionOptions = {
-  password: getSessionPassword(),
-  cookieName: "exitdebt_admin",
-  ttl: 8 * 60 * 60, // 8 hours
-  cookieOptions: {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax" as const,
-    path: "/",
-  },
-};
+export function getSessionOptions(): SessionOptions {
+  return {
+    password: getSessionPassword(),
+    cookieName: "exitdebt_admin",
+    ttl: 8 * 60 * 60, // 8 hours
+    cookieOptions: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax" as const,
+      path: "/",
+    },
+  };
+}

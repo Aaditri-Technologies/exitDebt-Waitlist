@@ -3,7 +3,7 @@ import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { getPool } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
-import { SESSION_OPTIONS, SessionData } from "@/lib/session";
+import { getSessionOptions, SessionData } from "@/lib/session";
 
 /**
  * Authenticate admin request via session cookie.
@@ -25,7 +25,7 @@ async function authenticateAdmin(request: NextRequest): Promise<NextResponse | n
 
     // Read the session from the request cookies
     const cookieStore = await cookies();
-    const session = await getIronSession<SessionData>(cookieStore, SESSION_OPTIONS);
+    const session = await getIronSession<SessionData>(cookieStore, getSessionOptions());
 
     if (!session.isAdmin) {
         return NextResponse.json(
