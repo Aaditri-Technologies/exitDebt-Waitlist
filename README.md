@@ -7,6 +7,7 @@ A waitlist landing page for **ExitDebt** — India's smartest debt management pl
 - **Next.js 16** (App Router, TypeScript)
 - **PostgreSQL 16** via `pg`
 - **Tailwind CSS v4**
+- **iron-session** — encrypted cookie-based admin sessions
 
 ## Pages
 
@@ -20,6 +21,7 @@ A waitlist landing page for **ExitDebt** — India's smartest debt management pl
 
 The admin dashboard includes:
 
+- **Cookie-based authentication** — secure, encrypted HTTP-only session cookies via `iron-session`
 - **Active / Archived tabs** — toggle between current and archived submissions
 - **Filters** — filter by Place (city) and Total Debt range (min / max)
 - **Print** — generate a formatted, print-ready page of visible entries
@@ -37,7 +39,7 @@ Submit a waitlist entry.
 {
   "name": "Rahul Sharma",
   "mobile": "9876543210",
-  "place": "Mumbai",
+  "place": "Surat",
   "totalDebt": 500000
 }
 ```
@@ -49,13 +51,17 @@ Submit a waitlist entry.
 | `409` | Duplicate mobile (24h window) |
 | `429` | Rate limited (15 req / 15 min per IP) |
 
+### `POST /api/admin/login`
+
+Authenticate and receive a session cookie.
+
+```json
+{ "secret": "your-admin-secret" }
+```
+
 ### `GET /api/admin/waitlist`
 
-Fetch all submissions. Requires `x-admin-secret` header.
-
-```bash
-curl -H "x-admin-secret: YOUR_SECRET" http://localhost:3000/api/admin/waitlist
-```
+Fetch all submissions. Requires valid session cookie (login first).
 
 ### `PATCH /api/admin/waitlist`
 
@@ -88,7 +94,7 @@ npm install
 
 # 2. Configure environment
 cp .env.local.example .env.local
-# Edit .env.local with your DATABASE_URL and ADMIN_SECRET
+# Edit .env.local with your DATABASE_URL, ADMIN_SECRET, and SESSION_SECRET
 
 # 3. Create database and run migration
 createdb exitdebt
@@ -104,20 +110,23 @@ Create a `.env.local` file:
 
 ```env
 DATABASE_URL=postgresql://username@localhost:5432/exitdebt
-ADMIN_SECRET=your-strong-secret-here   # minimum 8 characters
+ADMIN_SECRET=your-strong-secret-here        # minimum 8 characters
+SESSION_SECRET=your-32-char-session-secret   # minimum 32 characters (openssl rand -hex 16)
 ```
 
 ## Security
 
 | Feature | Details |
 |---|---|
-| **Rate Limiting** | 15 submissions / 15 min per IP; 10 admin attempts / 15 min |
+| **Rate Limiting** | PostgreSQL-backed — works across serverless invocations. 15 submissions / 15 min per IP; 10 admin login attempts / 15 min |
+| **Bot Protection** | Honeypot field + minimum form submission time check |
+| **Cookie Auth** | Admin sessions use `iron-session` encrypted HTTP-only cookies |
 | **Input Sanitization** | HTML entities escaped to prevent stored XSS |
 | **SQL Injection** | Parameterized queries via `pg` |
 | **Timing-Safe Auth** | Admin secret compared with `crypto.timingSafeEqual` |
 | **Duplicate Prevention** | Same mobile blocked within 24-hour window |
 | **Debt Capping** | Max ₹100 crore to prevent numeric overflow |
-| **Security Headers** | CSP, X-Frame-Options, HSTS, X-Content-Type-Options |
+| **Security Headers** | CSP, X-Frame-Options, HSTS, X-Content-Type-Options, Permissions-Policy |
 | **Secrets** | `.env*` gitignored — never committed |
 
 ## Database Schema
@@ -133,6 +142,12 @@ CREATE TABLE waitlist (
   archived    BOOLEAN DEFAULT false,
   created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE rate_limits (
+  key       VARCHAR(255) PRIMARY KEY,
+  count     INTEGER NOT NULL DEFAULT 0,
+  reset_at  BIGINT NOT NULL
+);
 ```
 
 ## Project Structure
@@ -141,34 +156,53 @@ CREATE TABLE waitlist (
 src/
 ├── app/
 │   ├── page.tsx                    # Homepage
-│   ├── layout.tsx                  # Root layout
+│   ├── layout.tsx                  # Root layout + SEO metadata + JSON-LD
 │   ├── globals.css                 # Design tokens
+│   ├── robots.ts                   # robots.txt (blocks /admin, /api)
+│   ├── sitemap.ts                  # sitemap.xml for Google
 │   ├── waitlist/page.tsx           # Waitlist form
 │   ├── admin/waitlist/page.tsx     # Admin dashboard
 │   └── api/
 │       ├── waitlist/route.ts       # POST — submit entry
-│       └── admin/waitlist/route.ts # GET, PATCH, DELETE — admin
+│       └── admin/
+│           ├── login/route.ts      # POST — admin login
+│           └── waitlist/route.ts   # GET, PATCH, DELETE — admin
 ├── components/
 │   ├── Navbar.tsx
-│   └── Footer.tsx
+│   ├── Footer.tsx
+│   └── CookieConsent.tsx           # Cookie consent banner
 ├── lib/
-│   ├── db.ts                       # PostgreSQL pool
-│   ├── rate-limit.ts               # In-memory rate limiter
+│   ├── db.ts                       # PostgreSQL pool (globalThis cached)
+│   ├── rate-limit.ts               # PostgreSQL-backed rate limiter
+│   ├── session.ts                  # iron-session config
 │   ├── sanitize.ts                 # Input sanitization
 │   └── city-state.ts               # City → State mapping
-└── proxy.ts                        # Security headers
+└── proxy.ts                        # Security headers (Next.js 16 proxy)
 ```
+
+## SEO & Crawlability
+
+- **sitemap.xml** — auto-generated via `src/app/sitemap.ts`
+- **robots.txt** — allows `/` and `/waitlist`, blocks `/admin/` and `/api/`
+- **JSON-LD** — structured data for Google AI answers (WebApplication schema)
+- **Open Graph + Twitter Cards** — rich link previews
+- **Canonical URLs** — via `metadataBase`
 
 ## Deployment
 
-Optimized for **Vercel**:
+Optimized for **Vercel + AWS RDS**:
 
 ```bash
 npm run build
 npx vercel
 ```
 
-> **Note:** For production, use a managed PostgreSQL service and consider Redis-backed rate limiting for multi-instance deployments.
+Set these environment variables in the Vercel dashboard:
+- `DATABASE_URL` — your AWS RDS PostgreSQL connection string
+- `ADMIN_SECRET` — strong random string (8+ chars)
+- `SESSION_SECRET` — random 32+ char string
+
+Then run `migrate.sql` against your production database.
 
 ## License
 

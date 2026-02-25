@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Security headers middleware.
+ * Next.js Proxy — security headers.
  * Adds HTTP security headers to all responses to prevent:
  * - Clickjacking (X-Frame-Options)
  * - MIME type sniffing (X-Content-Type-Options)

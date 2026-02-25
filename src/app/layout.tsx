@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "@/components/CookieConsent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -9,24 +10,45 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ExitDebt – Join the Waitlist",
+  title: {
+    default: "ExitDebt – India's Smartest Debt Management Platform",
+    template: "%s | ExitDebt",
+  },
   description:
-    "Be the first to know when ExitDebt launches. Sign up for early access to India's smartest debt management platform.",
+    "Join the ExitDebt waitlist. India's smartest debt management platform — understand, restructure, and become debt-free faster. No CIBIL impact. 100% free.",
   keywords: [
-    "debt",
-    "waitlist",
+    "debt management India",
+    "debt relief",
+    "loan settlement",
+    "debt restructuring",
     "financial health",
-    "debt management",
-    "India",
+    "CIBIL score",
+    "debt free",
     "ExitDebt",
+    "waitlist",
   ],
+  metadataBase: new URL("https://exitdebt.in"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "ExitDebt – Join the Waitlist",
+    title: "ExitDebt – India's Smartest Debt Management Platform",
     description:
-      "Be the first to know when ExitDebt launches. Sign up for early access.",
+      "Join the waitlist. Understand, restructure, and exit your debt — on your terms. No CIBIL impact. 100% free.",
     type: "website",
     locale: "en_IN",
     siteName: "ExitDebt",
+    url: "https://exitdebt.in",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ExitDebt – Join the Waitlist",
+    description:
+      "India's smartest debt management platform. Sign up for early access.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -37,8 +59,37 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {/* JSON-LD Structured Data for AEO (Answer Engine Optimization) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "ExitDebt",
+              url: "https://exitdebt.in",
+              description:
+                "India's smartest debt management platform. Understand, restructure, and become debt-free faster.",
+              applicationCategory: "FinanceApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "INR",
+              },
+              creator: {
+                "@type": "Organization",
+                name: "ExitDebt Technologies Pvt. Ltd.",
+                url: "https://exitdebt.in",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

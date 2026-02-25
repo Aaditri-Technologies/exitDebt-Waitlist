@@ -1,35 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getIronSession } from "iron-session";
+import { cookies } from "next/headers";
 import { getPool } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
-import { timingSafeEqual } from "crypto";
+import { SESSION_OPTIONS, SessionData } from "@/lib/session";
 
 /**
- * Timing-safe string comparison to prevent timing attacks.
+ * Authenticate admin request via session cookie.
+ * Returns error response or null if authenticated.
  */
-function timingSafeCompare(a: string, b: string): boolean {
-    try {
-        const bufA = Buffer.from(a, "utf-8");
-        const bufB = Buffer.from(b, "utf-8");
-        if (bufA.length !== bufB.length) {
-            timingSafeEqual(bufA, bufA);
-            return false;
-        }
-        return timingSafeEqual(bufA, bufB);
-    } catch {
-        return false;
-    }
-}
-
-/**
- * Authenticate admin request. Returns error response or null if authenticated.
- */
-function authenticateAdmin(request: NextRequest): NextResponse | null {
+async function authenticateAdmin(request: NextRequest): Promise<NextResponse | null> {
     const ip =
         request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
         request.headers.get("x-real-ip") ||
         "unknown";
 
-    const { allowed } = rateLimit(`admin:${ip}`, 30, 15 * 60 * 1000);
+    const { allowed } = await rateLimit(`admin:${ip}`, 30, 15 * 60 * 1000);
     if (!allowed) {
         return NextResponse.json(
             { success: false, error: "Too many attempts. Please try again later." },
@@ -37,18 +23,11 @@ function authenticateAdmin(request: NextRequest): NextResponse | null {
         );
     }
 
-    const secret = request.headers.get("x-admin-secret");
-    const adminSecret = process.env.ADMIN_SECRET;
+    // Read the session from the request cookies
+    const cookieStore = await cookies();
+    const session = await getIronSession<SessionData>(cookieStore, SESSION_OPTIONS);
 
-    if (!adminSecret || adminSecret.length < 8) {
-        console.error("ADMIN_SECRET is not set or too weak (must be >= 8 chars).");
-        return NextResponse.json(
-            { success: false, error: "Server configuration error." },
-            { status: 500 }
-        );
-    }
-
-    if (!secret || !timingSafeCompare(secret, adminSecret)) {
+    if (!session.isAdmin) {
         return NextResponse.json(
             { success: false, error: "Unauthorized" },
             { status: 401 }
@@ -63,7 +42,7 @@ function authenticateAdmin(request: NextRequest): NextResponse | null {
  * Returns all waitlist submissions (active + archived).
  */
 export async function GET(request: NextRequest) {
-    const authError = authenticateAdmin(request);
+    const authError = await authenticateAdmin(request);
     if (authError) return authError;
 
     try {
@@ -92,7 +71,7 @@ export async function GET(request: NextRequest) {
  * Body: { id: number, archived: boolean }
  */
 export async function PATCH(request: NextRequest) {
-    const authError = authenticateAdmin(request);
+    const authError = await authenticateAdmin(request);
     if (authError) return authError;
 
     try {
@@ -145,7 +124,7 @@ export async function PATCH(request: NextRequest) {
  * Body: { id: number }
  */
 export async function DELETE(request: NextRequest) {
-    const authError = authenticateAdmin(request);
+    const authError = await authenticateAdmin(request);
     if (authError) return authError;
 
     try {

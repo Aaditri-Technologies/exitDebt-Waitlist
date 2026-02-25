@@ -3,22 +3,34 @@ import { Pool } from "pg";
 /**
  * PostgreSQL connection pool.
  * Uses DATABASE_URL from environment variables.
- * The pool is created once and reused across requests (serverless-safe singleton).
+ *
+ * In development, the pool is cached on `globalThis` to survive Next.js
+ * hot-reloads without exhausting database connections.
+ * In production (Vercel serverless), the module-level singleton is sufficient.
  */
 
-let pool: Pool | null = null;
+const globalForPg = globalThis as unknown as { pgPool: Pool | undefined };
+
+function createPool(): Pool {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL environment variable is not set");
+  }
+  return new Pool({
+    connectionString: process.env.DATABASE_URL,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 5000,
+  });
+}
+
+let pool: Pool | undefined = globalForPg.pgPool;
 
 export function getPool(): Pool {
   if (!pool) {
-    if (!process.env.DATABASE_URL) {
-      throw new Error("DATABASE_URL environment variable is not set");
+    pool = createPool();
+    if (process.env.NODE_ENV !== "production") {
+      globalForPg.pgPool = pool;
     }
-    pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      max: 10,
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 5000,
-    });
   }
   return pool;
 }

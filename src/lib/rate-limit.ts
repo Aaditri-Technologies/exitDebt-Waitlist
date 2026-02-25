@@ -1,52 +1,81 @@
+import { getPool } from "./db";
+
 /**
- * In-memory rate limiter for API routes.
- * Tracks requests by IP address with a sliding window.
+ * PostgreSQL-backed rate limiter for API routes.
+ * Tracks requests by key (e.g., IP address) with a fixed window.
  *
- * Note: In production with multiple instances, use Redis-backed rate limiting.
+ * Unlike an in-memory Map, this works correctly across Vercel serverless
+ * function invocations since state is persisted in the database.
+ *
+ * Requires the `rate_limits` table (see migrate.sql).
  */
-
-interface RateLimitEntry {
-    count: number;
-    resetAt: number;
-}
-
-const store = new Map<string, RateLimitEntry>();
-
-// Cleanup stale entries every 5 minutes
-setInterval(() => {
-    const now = Date.now();
-    for (const [key, entry] of store) {
-        if (now > entry.resetAt) {
-            store.delete(key);
-        }
-    }
-}, 5 * 60 * 1000);
 
 /**
  * Check if a request should be rate-limited.
- * @param key - Unique identifier (e.g., IP address)
+ * @param key - Unique identifier (e.g., IP address or "admin:<ip>")
  * @param maxRequests - Max requests allowed in the window
  * @param windowMs - Time window in milliseconds
  * @returns { allowed, remaining, resetAt }
  */
-export function rateLimit(
-    key: string,
-    maxRequests: number,
-    windowMs: number
-): { allowed: boolean; remaining: number; resetAt: number } {
-    const now = Date.now();
-    const entry = store.get(key);
+export async function rateLimit(
+  key: string,
+  maxRequests: number,
+  windowMs: number
+): Promise<{ allowed: boolean; remaining: number; resetAt: number }> {
+  const pool = getPool();
+  const now = Date.now();
+  const resetAt = now + windowMs;
 
-    if (!entry || now > entry.resetAt) {
-        // First request or window expired — start new window
-        store.set(key, { count: 1, resetAt: now + windowMs });
-        return { allowed: true, remaining: maxRequests - 1, resetAt: now + windowMs };
+  try {
+    // Upsert: if the key exists and its window hasn't expired, increment.
+    // If the key doesn't exist or the window expired, start a new window.
+    const result = await pool.query(
+      `INSERT INTO rate_limits (key, count, reset_at)
+       VALUES ($1, 1, $2)
+       ON CONFLICT (key) DO UPDATE
+         SET count = CASE
+           WHEN rate_limits.reset_at <= $3 THEN 1
+           ELSE rate_limits.count + 1
+         END,
+         reset_at = CASE
+           WHEN rate_limits.reset_at <= $3 THEN $2
+           ELSE rate_limits.reset_at
+         END
+       RETURNING count, reset_at`,
+      [key, resetAt, now]
+    );
+
+    const { count, reset_at: storedResetAt } = result.rows[0];
+    const currentResetAt = Number(storedResetAt);
+
+    if (count > maxRequests) {
+      return { allowed: false, remaining: 0, resetAt: currentResetAt };
     }
 
-    if (entry.count >= maxRequests) {
-        return { allowed: false, remaining: 0, resetAt: entry.resetAt };
-    }
+    return {
+      allowed: true,
+      remaining: maxRequests - count,
+      resetAt: currentResetAt,
+    };
+  } catch (error) {
+    // If the rate_limits table doesn't exist or DB is unreachable,
+    // fail open to avoid blocking all legitimate traffic.
+    console.error("Rate limit check failed, allowing request:", error);
+    return { allowed: true, remaining: maxRequests, resetAt };
+  }
+}
 
-    entry.count++;
-    return { allowed: true, remaining: maxRequests - entry.count, resetAt: entry.resetAt };
+/**
+ * Cleanup expired rate limit entries.
+ * Call this periodically (e.g., via a cron job or after each request).
+ */
+export async function cleanupExpiredRateLimits(): Promise<void> {
+  try {
+    const pool = getPool();
+    await pool.query("DELETE FROM rate_limits WHERE reset_at <= $1", [
+      Date.now(),
+    ]);
+  } catch (error) {
+    console.error("Rate limit cleanup failed:", error);
+  }
 }

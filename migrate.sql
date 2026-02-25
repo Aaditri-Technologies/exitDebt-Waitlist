@@ -20,3 +20,17 @@ CREATE INDEX IF NOT EXISTS idx_waitlist_state ON waitlist(state);
 
 -- Index on archived for tab filtering
 CREATE INDEX IF NOT EXISTS idx_waitlist_archived ON waitlist(archived);
+
+-- ── Rate Limiting ──
+-- Stores per-key request counts for PostgreSQL-backed rate limiting.
+-- Used instead of in-memory storage (which doesn't work in serverless).
+CREATE TABLE IF NOT EXISTS rate_limits (
+  key        VARCHAR(255) PRIMARY KEY,
+  count      INTEGER NOT NULL DEFAULT 1,
+  reset_at   BIGINT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_rate_limits_reset ON rate_limits(reset_at);
+
+
+

@@ -34,29 +34,21 @@ export default function AdminWaitlistPage() {
     const [deleteTarget, setDeleteTarget] = useState<WaitlistEntry | null>(null);
     const [actionLoading, setActionLoading] = useState<number | null>(null);
 
-    // Use a ref to always have the latest secret available
-    const secretRef = React.useRef(secret);
-    secretRef.current = secret;
-
-    const fetchData = useCallback(async (adminSecret: string) => {
+    const fetchData = useCallback(async () => {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch("/api/admin/waitlist", {
-                headers: { "x-admin-secret": adminSecret },
-            });
+            const res = await fetch("/api/admin/waitlist");
             const json = await res.json();
 
             if (json.success) {
                 setData(json.data);
                 setCount(json.count);
                 setAuthenticated(true);
-                // Persist secret in sessionStorage for page refreshes
-                sessionStorage.setItem("admin_secret", adminSecret);
-            } else {
-                setError(json.error || "Failed to authenticate.");
+            } else if (res.status === 401) {
                 setAuthenticated(false);
-                sessionStorage.removeItem("admin_secret");
+            } else {
+                setError(json.error || "Failed to fetch data.");
             }
         } catch {
             setError("Network error. Please try again.");
@@ -65,46 +57,57 @@ export default function AdminWaitlistPage() {
         }
     }, []);
 
-    // Auto-login from sessionStorage on mount
+    // Check if already authenticated on mount (cookie might exist)
     useEffect(() => {
-        const saved = sessionStorage.getItem("admin_secret");
-        if (saved) {
-            setSecret(saved);
-            fetchData(saved);
-        }
+        fetchData();
     }, [fetchData]);
 
-    function handleAuth(e: React.FormEvent) {
+    async function handleAuth(e: React.FormEvent) {
         e.preventDefault();
-        if (secret.trim()) {
-            fetchData(secret.trim());
+        if (!secret.trim()) return;
+
+        setLoading(true);
+        setError("");
+        try {
+            const res = await fetch("/api/admin/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ secret: secret.trim() }),
+            });
+            const json = await res.json();
+
+            if (json.success) {
+                setSecret(""); // Clear from memory
+                await fetchData();
+            } else {
+                setError(json.error || "Failed to authenticate.");
+            }
+        } catch {
+            setError("Network error. Please try again.");
+        } finally {
+            setLoading(false);
         }
     }
 
     // Auto-refresh every 30 seconds
     useEffect(() => {
-        if (!authenticated || !secret) return;
-        const interval = setInterval(() => fetchData(secret), 30000);
+        if (!authenticated) return;
+        const interval = setInterval(() => fetchData(), 30000);
         return () => clearInterval(interval);
-    }, [authenticated, secret, fetchData]);
+    }, [authenticated, fetchData]);
 
     // ── Actions ──
     async function handleArchive(id: number, archive: boolean) {
-        const currentSecret = secretRef.current;
-        if (!currentSecret) return;
         setActionLoading(id);
         try {
             const res = await fetch("/api/admin/waitlist", {
                 method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-admin-secret": currentSecret,
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id, archived: archive }),
             });
             const json = await res.json();
             if (json.success) {
-                await fetchData(currentSecret);
+                await fetchData();
             } else {
                 alert(json.error || "Failed to update entry.");
             }
@@ -116,22 +119,17 @@ export default function AdminWaitlistPage() {
     }
 
     async function handleDelete(id: number) {
-        const currentSecret = secretRef.current;
-        if (!currentSecret) return;
         setActionLoading(id);
         try {
             const res = await fetch("/api/admin/waitlist", {
                 method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-admin-secret": currentSecret,
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id }),
             });
             const json = await res.json();
             if (json.success) {
                 setDeleteTarget(null);
-                await fetchData(currentSecret);
+                await fetchData();
             } else {
                 alert(json.error || "Failed to delete entry.");
             }
@@ -207,7 +205,7 @@ export default function AdminWaitlistPage() {
             .join("");
 
         const totalDebt = filteredData.reduce((sum, e) => sum + Number(e.total_debt), 0);
-        const filterSummary = [];
+        const filterSummary: string[] = [];
         if (filterPlace) filterSummary.push(`Place: ${filterPlace}`);
         if (filterDebtMin) filterSummary.push(`Min Debt: ₹${Number(filterDebtMin).toLocaleString("en-IN")}`);
         if (filterDebtMax) filterSummary.push(`Max Debt: ₹${Number(filterDebtMax).toLocaleString("en-IN")}`);
@@ -323,7 +321,7 @@ export default function AdminWaitlistPage() {
                                     Print
                                 </button>
                                 <button
-                                    onClick={() => fetchData(secret)}
+                                    onClick={() => fetchData()}
                                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-90 cursor-pointer"
                                     style={{
                                         backgroundColor: "var(--color-bg-soft)",
