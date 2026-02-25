@@ -52,6 +52,12 @@ export async function rateLimit(
       return { allowed: false, remaining: 0, resetAt: currentResetAt };
     }
 
+    // Probabilistic cleanup: ~1% of requests trigger stale row deletion.
+    // Fire-and-forget to avoid adding latency to the request.
+    if (Math.random() < 0.01) {
+      cleanupExpiredRateLimits().catch(() => { });
+    }
+
     return {
       allowed: true,
       remaining: maxRequests - count,

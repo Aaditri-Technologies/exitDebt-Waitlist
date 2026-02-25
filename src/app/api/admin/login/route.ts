@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { rateLimit } from "@/lib/rate-limit";
-import { SESSION_OPTIONS, SessionData } from "@/lib/session";
+import { getSessionOptions, SessionData } from "@/lib/session";
 import { timingSafeEqual } from "crypto";
 
 /**
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
 
         // Set session cookie via next/headers cookies()
         const cookieStore = await cookies();
-        const session = await getIronSession<SessionData>(cookieStore, SESSION_OPTIONS);
+        const session = await getIronSession<SessionData>(cookieStore, getSessionOptions());
         session.isAdmin = true;
         await session.save();
 

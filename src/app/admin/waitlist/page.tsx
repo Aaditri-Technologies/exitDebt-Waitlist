@@ -89,6 +89,17 @@ export default function AdminWaitlistPage() {
         }
     }
 
+    async function handleLogout() {
+        try {
+            await fetch("/api/admin/logout", { method: "POST" });
+        } catch {
+            // ignore
+        }
+        setAuthenticated(false);
+        setData([]);
+        setCount(0);
+    }
+
     // Auto-refresh every 30 seconds
     useEffect(() => {
         if (!authenticated) return;
@@ -333,6 +344,19 @@ export default function AdminWaitlistPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.992 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182M21.015 4.356v4.992" />
                                     </svg>
                                     Refresh
+                                </button>
+                                <button
+                                    onClick={handleLogout}
+                                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-90 cursor-pointer"
+                                    style={{
+                                        backgroundColor: "var(--color-danger)",
+                                        color: "#fff",
+                                    }}
+                                >
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                    </svg>
+                                    Logout
                                 </button>
                             </div>
                         </div>
