@@ -172,7 +172,7 @@ export default function WaitlistPage() {
 
                                 {/* Trust pills */}
                                 <div className="flex flex-wrap gap-3">
-                                    {["No spam, ever", "256-bit encrypted", "Be first in line"].map((t) => (
+                                    {["India's First", "256-bit encrypted", "Be first in line"].map((t) => (
                                         <span
                                             key={t}
                                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
@@ -495,7 +495,7 @@ export default function WaitlistPage() {
                                             className="text-xs text-center mt-4"
                                             style={{ color: "var(--color-text-muted)" }}
                                         >
-                                            🔒 Your information is safe and will never be shared.
+                                    
                                         </p>
                                     </div>
                                 )}
