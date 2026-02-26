@@ -18,6 +18,7 @@ export default function AdminWaitlistPage() {
     const [secret, setSecret] = useState("");
     const [authenticated, setAuthenticated] = useState(false);
     const [data, setData] = useState<WaitlistEntry[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -38,7 +39,7 @@ export default function AdminWaitlistPage() {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch("/api/admin/waitlist");
+            const res = await fetch("/api/admin/waitlist", { cache: "no-store" });
             const json = await res.json();
 
             if (json.success) {

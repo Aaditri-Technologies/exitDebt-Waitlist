@@ -37,6 +37,8 @@ async function authenticateAdmin(request: NextRequest): Promise<NextResponse | n
     return null; // authenticated
 }
 
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/admin/waitlist
  * Returns all waitlist submissions (active + archived).

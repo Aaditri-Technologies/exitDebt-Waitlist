@@ -1,0 +1,5 @@
+commit 59e11a41192b837b89584d15a91c0f64ef3a79c5
+Author: Somshubhro07 <guha.somshubhro07@gmail.com>
+Date:   Tue Feb 24 22:20:41 2026 +0530
+
+    security: serverless rate limiting, cookie auth, bot protection, SEO
