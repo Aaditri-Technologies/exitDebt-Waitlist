@@ -48,30 +48,8 @@ export default function HomePage() {
             </Link>
 
             <p className="text-xs mt-4" style={{ color: "var(--color-text-muted)" }}>
-              Be among the first 10,000 to get early access.
+              Be among the first to get early access.
             </p>
-
-            {/* Trust pills */}
-            <div className="flex flex-wrap justify-center gap-3 mt-10">
-              {["No CIBIL impact", "256-bit encrypted", "Completely free"].map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{
-                    backgroundColor: "var(--color-bg-card)",
-                    border: "1px solid var(--color-border)",
-                    color: "var(--color-text-secondary)",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-                  }}
-                >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: "var(--color-purple)" }}
-                  />
-                  {t}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
