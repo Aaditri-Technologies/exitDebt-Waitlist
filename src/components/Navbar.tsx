@@ -16,7 +16,7 @@ export default function Navbar() {
                 <Link href="/" className="flex items-center gap-2 group">
                     <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                        style={{ backgroundColor: "var(--color-purple)" }}
+                        style={{ backgroundColor: "var(--color-teal)" }}
                     >
                         E
                     </div>
@@ -33,7 +33,7 @@ export default function Navbar() {
                     <Link
                         href="/waitlist"
                         className="px-5 py-2 rounded-full text-sm font-bold text-white transition-all hover:opacity-90"
-                        style={{ backgroundColor: "var(--color-purple)" }}
+                        style={{ backgroundColor: "var(--color-teal)" }}
                     >
                         Join Waitlist →
                     </Link>

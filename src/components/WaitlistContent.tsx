@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 
 export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
     const [name, setName] = useState("");
@@ -26,19 +26,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
     const [placeError, setPlaceError] = useState("");
     const [debtError, setDebtError] = useState("");
 
-    // Stagger fade-in animation on mount
-    useEffect(() => {
-        const items = document.querySelectorAll(".fade-item");
-        items.forEach((item, index) => {
-            setTimeout(() => {
-                const el = item as HTMLElement;
-                el.style.transition = "all 0.8s cubic-bezier(0.4,0,0.2,1)";
-                el.style.opacity = "1";
-                el.style.transform = "translateY(0)";
-            }, index * 200);
-        });
-
-    }, []);
+    // Stagger fade-in animation removed as per user request
 
     function handleMobileChange(value: string) {
         const digits = value.replace(/\D/g, "").slice(0, 10);
@@ -150,12 +138,12 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                 <div className="max-w-6xl mx-auto px-8 py-20 lg:py-28">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                         {/* Left — Headline */}
-                        <div className="lg:col-span-7 animate-fadeIn fade-item">
+                        <div className="lg:col-span-7">
                             {onBack && (
                                 <button
                                     onClick={onBack}
                                     className="text-sm font-semibold mb-6 flex items-center gap-1 transition-opacity hover:opacity-80"
-                                    style={{ color: "var(--color-purple)" }}
+                                    style={{ color: "var(--color-teal)" }}
                                 >
                                     ← Back to Home
                                 </button>
@@ -165,7 +153,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                 className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
                                 style={{
                                     backgroundColor: "rgba(115,0,190,0.08)",
-                                    color: "var(--color-purple)",
+                                    color: "var(--color-teal)",
                                 }}
                             >
                                 Early access — Limited spots
@@ -176,7 +164,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                 style={{ color: "var(--color-text-primary)" }}
                             >
                                 Join the{" "}
-                                <span style={{ color: "var(--color-purple)" }}>ExitDebt</span>{" "}
+                                <span style={{ color: "var(--color-teal)" }}>ExitDebt</span>{" "}
                                 Waitlist
                             </h1>
 
@@ -203,7 +191,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                     >
                                         <span
                                             className="w-1.5 h-1.5 rounded-full"
-                                            style={{ backgroundColor: "var(--color-purple)" }}
+                                            style={{ backgroundColor: "var(--color-teal)" }}
                                         />
                                         {t}
                                     </span>
@@ -216,7 +204,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                             {/* ─── Form Card ─── */}
                             <div
                                 id="formCard"
-                                className={`rounded-2xl p-6 sm:p-8 form-card fade-item ${submitted ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+                                className={`rounded-2xl p-6 sm:p-8 form-card ${submitted ? "opacity-0 pointer-events-none" : "opacity-100"}`}
                                 style={{
                                     backgroundColor: "var(--color-bg-card)",
                                     boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
@@ -379,7 +367,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                         }
                                     }}
                                     className="text-sm font-semibold transition-colors hover:text-purple-700"
-                                    style={{ color: "var(--color-purple)" }}
+                                    style={{ color: "var(--color-teal)" }}
                                 >
                                     ← Register another person
                                 </button>

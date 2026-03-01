@@ -8,10 +8,10 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
     <div className="w-full">
       {/* ───── FEATURES ───── */}
       <section className="max-w-6xl mx-auto px-8 py-20 lg:py-24">
-        <div className="text-center mb-14 animate-fadeIn">
+        <div className="text-center mb-14">
           <p
             className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: "var(--color-purple)" }}
+            style={{ color: "var(--color-teal)" }}
           >
             What you&apos;ll get
           </p>
@@ -54,14 +54,14 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
           ].map((feature, i) => (
             <div
               key={feature.title}
-              className={`rounded-2xl p-7 hover-lift animate-slideUp stagger-${i + 1}`}
+              className={`rounded-2xl p-7 hover-lift`}
               style={{
                 backgroundColor: "var(--color-bg-card)",
                 boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
                 border: "1px solid var(--color-border)",
               }}
             >
-              <span style={{ color: "var(--color-purple)" }}>{feature.icon}</span>
+              <span style={{ color: "var(--color-teal)" }}>{feature.icon}</span>
               <h3
                 className="text-base font-bold mt-4 mb-2"
                 style={{ color: "var(--color-text-primary)" }}
@@ -95,7 +95,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             href="#"
             onClick={(e) => { e.preventDefault(); onWaitlistClick(e); }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-[0.98]"
-            style={{ backgroundColor: "var(--color-purple)" }}
+            style={{ backgroundColor: "var(--color-teal)" }}
           >
             Join the Waitlist →
           </Link>

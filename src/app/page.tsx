@@ -25,17 +25,15 @@ export default function HomePage() {
       <Navbar />
 
       {/* Top Half: The Slider (Hero vs. Waitlist Form) */}
-      <div ref={heroRef} className="relative w-full overflow-x-hidden flex">
+      <div ref={heroRef} className="grid grid-cols-1 w-full overflow-hidden relative">
         <div
-          className={`w-full shrink-0 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${view === "home" ? "relative opacity-100" : "absolute opacity-0 pointer-events-none"}`}
-          style={{ transform: view === "home" ? "translateX(0)" : "translateX(-50vw)" }}
+          className={`col-start-1 row-start-1 w-full transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${view === "home" ? "opacity-100 z-10 pointer-events-auto transform-none" : "opacity-0 pointer-events-none -translate-x-12"}`}
         >
           <HomeContent onWaitlistClick={() => setView("waitlist")} />
         </div>
 
         <div
-          className={`w-full shrink-0 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${view === "waitlist" ? "relative opacity-100" : "absolute opacity-0 pointer-events-none"}`}
-          style={{ transform: view === "waitlist" ? "translateX(0)" : "translateX(50vw)" }}
+          className={`col-start-1 row-start-1 w-full transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${view === "waitlist" ? "opacity-100 z-10 pointer-events-auto transform-none" : "opacity-0 pointer-events-none translate-x-12"}`}
         >
           <WaitlistContent onBack={() => setView("home")} />
         </div>
