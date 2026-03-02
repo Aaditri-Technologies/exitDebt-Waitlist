@@ -9,13 +9,13 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
       {/* ───── HERO ───── */}
       <section className="bg-transparent">
         <div className="max-w-6xl mx-auto px-8 py-20 lg:py-28">
-          <div className="max-w-2xl mx-auto text-center animate-fadeIn">
+          <div className="max-w-2xl mx-auto text-center">
             {/* Badge */}
             <div
               className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
               style={{
-                backgroundColor: "rgba(115,0,190,0.08)",
-                color: "var(--color-purple)",
+                backgroundColor: "rgba(19,78,74,0.08)",
+                color: "var(--color-teal)",
               }}
             >
               Coming Soon — Join the Waitlist
@@ -26,7 +26,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
               style={{ color: "var(--color-text-primary)" }}
             >
               Exit your debt,{" "}
-              <span style={{ color: "var(--color-purple)" }}>on your terms.</span>
+              <span style={{ color: "var(--color-teal)" }}>on your terms.</span>
             </h1>
 
             <p
@@ -42,7 +42,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
               href="#"
               onClick={(e) => { e.preventDefault(); onWaitlistClick(e); }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-[0.98]"
-              style={{ backgroundColor: "var(--color-purple)" }}
+              style={{ backgroundColor: "var(--color-teal)" }}
             >
               Join the Waitlist →
             </Link>
@@ -52,7 +52,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
         </div>
       </section>
 
-      
+
     </div>
   );
 }
