@@ -152,7 +152,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                             <div
                                 className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
                                 style={{
-                                    backgroundColor: "rgba(115,0,190,0.08)",
+                                    backgroundColor: "rgba(19,78,74,0.08)",
                                     color: "var(--color-teal)",
                                 }}
                             >
@@ -366,7 +366,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                             sessionStorage.removeItem("waitlist_submitted");
                                         }
                                     }}
-                                    className="text-sm font-semibold transition-colors hover:text-purple-700"
+                                    className="text-sm font-semibold transition-colors hover:text-teal-800"
                                     style={{ color: "var(--color-teal)" }}
                                 >
                                     ← Register another person
