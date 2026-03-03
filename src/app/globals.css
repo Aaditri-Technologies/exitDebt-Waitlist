@@ -349,3 +349,154 @@ input[type="number"] {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ─── Hero Slider Two-Phase Transition ─── */
+.hero-slider {
+  will-change: opacity, transform, filter;
+}
+
+.hero-phase-idle {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+@keyframes hero-exit {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+    filter: blur(3px);
+  }
+}
+
+@keyframes hero-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(-8px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-phase-exit {
+  animation: hero-exit 450ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero-phase-enter {
+  animation: hero-enter 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── Hero Animation (GIF) ─── */
+.hero-animation-container {
+  width: 280px;
+  height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background: var(--color-bg-soft);
+}
+
+.hero-animation-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Desktop: larger */
+@media (min-width: 1024px) {
+  .hero-animation-container {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+/* Small mobile: smaller */
+@media (max-width: 480px) {
+  .hero-animation-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+  }
+}
+
+/* Waitlist success GIF */
+.success-gif-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  background: var(--color-bg-soft);
+  position: relative;
+}
+
+.success-gif-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ─── Scroll-Down Indicator ─── */
+@keyframes bounce-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.scroll-hint-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 28px;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.scroll-hint-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.scroll-hint-container:hover .scroll-hint-inner,
+.scroll-hint-container:focus-visible .scroll-hint-inner {
+  color: var(--color-teal);
+}
+
+.scroll-hint-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scroll-hint-chevron {
+  animation: bounce-down 1.8s ease-in-out infinite;
+}
