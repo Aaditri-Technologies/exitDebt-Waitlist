@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick: (e: React.MouseEvent) => void }) {
+export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick: () => void }) {
   return (
     <div className="w-full">
       {/* ───── FEATURES ───── */}

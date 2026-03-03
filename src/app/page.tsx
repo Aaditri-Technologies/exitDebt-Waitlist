@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HomeContent from "@/components/HomeContent";
@@ -8,39 +8,60 @@ import WaitlistContent from "@/components/WaitlistContent";
 import MarketingContent from "@/components/MarketingContent";
 
 export default function HomePage() {
-  const [view, setView] = useState<"home" | "waitlist">("home");
-  const heroRef = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"idle" | "exiting" | "entering">("idle");
+  const [displayView, setDisplayView] = useState<"home" | "waitlist">("home");
 
-  useEffect(() => {
-    if (view === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      // When sliding to waitlist, scroll gently to the top of the form area
-      heroRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [view]);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+
+  const transitionTo = useCallback((newView: "home" | "waitlist") => {
+    if (newView === displayView || phase !== "idle") return;
+    setPhase("exiting");
+    setTimeout(() => {
+      setDisplayView(newView);
+      setPhase("entering");
+      setTimeout(() => setPhase("idle"), 500);
+      if (newView === "waitlist") {
+        heroRef.current?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 400); // Wait for exit animation
+  }, [displayView, phase]);
+
+  const switchToWaitlist = useCallback(() => {
+    transitionTo("waitlist");
+  }, [transitionTo]);
+
+  const switchToHome = useCallback(() => {
+    transitionTo("home");
+  }, [transitionTo]);
+
+  // CSS class for the hero slider phase
+  const sliderClass =
+    phase === "exiting" ? "hero-phase-exit" :
+      phase === "entering" ? "hero-phase-enter" :
+        "hero-phase-idle";
 
   return (
     <div className="min-h-screen flex flex-col relative" style={{ backgroundColor: "var(--color-bg)" }}>
       <Navbar />
 
-      {/* Top Half: The Slider (Hero vs. Waitlist Form) */}
-      <div ref={heroRef} className="grid grid-cols-1 w-full overflow-hidden relative">
-        <div
-          className={`col-start-1 row-start-1 w-full transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${view === "home" ? "opacity-100 z-10 pointer-events-auto transform-none" : "opacity-0 pointer-events-none -translate-x-12"}`}
-        >
-          <HomeContent onWaitlistClick={() => setView("waitlist")} />
-        </div>
-
-        <div
-          className={`col-start-1 row-start-1 w-full transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${view === "waitlist" ? "opacity-100 z-10 pointer-events-auto transform-none" : "opacity-0 pointer-events-none translate-x-12"}`}
-        >
-          <WaitlistContent onBack={() => setView("home")} />
+      {/* Hero Slider — renders active view, animated via CSS keyframes */}
+      <div className="w-full overflow-hidden relative" ref={heroRef}>
+        <div className={`hero-slider ${sliderClass}`}>
+          {displayView === "home" ? (
+            <HomeContent onWaitlistClick={switchToWaitlist} />
+          ) : (
+            <WaitlistContent onBack={switchToHome} />
+          )}
         </div>
       </div>
 
-      {/* Bottom Half: The Persistent Features Matrix and Bottom CTA */}
-      <MarketingContent onWaitlistClick={() => setView("waitlist")} />
+      {/* Bottom Half: Features + Bottom CTA */}
+      <div ref={featuresRef}>
+        <MarketingContent onWaitlistClick={switchToWaitlist} />
+      </div>
 
       <Footer />
     </div>

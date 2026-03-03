@@ -252,6 +252,44 @@ input[type="number"] {
   /* The JS script adds the transition dynamically */
 }
 
+/* ─── Hero Transitions ─── */
+.hero-slider {
+  display: grid;
+  grid-template-columns: minmax(auto, 1px);
+  /* avoid layout collapse */
+  transition: all 0.5s ease;
+}
+
+.hero-phase-idle {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero-phase-exit {
+  opacity: 0;
+  transform: translateX(-40px);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.hero-phase-enter {
+  animation: slideInFromOpposite 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideInFromOpposite {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
 /* Floating labels */
 .form-group-relative {
   position: relative;
