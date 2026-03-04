@@ -1,15 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Next.js Proxy — security headers.
+ * Next.js Middleware — Security headers.
+ *
  * Adds HTTP security headers to all responses to prevent:
  * - Clickjacking (X-Frame-Options)
  * - MIME type sniffing (X-Content-Type-Options)
  * - XSS (Content-Security-Policy)
  * - Information leakage (X-Powered-By removal, Referrer-Policy)
+ *
+ * This file MUST be named `middleware.ts` and live in `src/` for
+ * Next.js to detect and activate it automatically.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
     // Prevent clickjacking — only allow this site to frame itself
@@ -58,7 +62,7 @@ export function proxy(request: NextRequest) {
     return response;
 }
 
-// Apply to all routes except static files
+// Apply to all routes except static files and Next.js internals
 export const config = {
     matcher: [
         "/((?!_next/static|_next/image|favicon.ico).*)",

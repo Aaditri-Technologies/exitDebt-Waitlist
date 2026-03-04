@@ -51,7 +51,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
               title: "Smart Settlement",
               desc: "Negotiate better terms and save thousands on interest payments.",
             },
-          ].map((feature, i) => (
+          ].map((feature) => (
             <div
               key={feature.title}
               className={`rounded-2xl p-7 hover-lift`}

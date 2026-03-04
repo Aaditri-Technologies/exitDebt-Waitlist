@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: React.MouseEvent) => void }) {
+export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () => void }) {
   return (
     <div className="w-full">
       {/* ───── HERO ───── */}
@@ -63,7 +63,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
           <div className="flex justify-center mt-8 lg:mt-10">
             <Link
               href="#"
-              onClick={(e) => { e.preventDefault(); onWaitlistClick(e); }}
+              onClick={(e) => { e.preventDefault(); onWaitlistClick(); }}
               className="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
               style={{ backgroundColor: "var(--color-teal)" }}
             >

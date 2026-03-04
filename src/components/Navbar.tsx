@@ -7,7 +7,7 @@ export default function Navbar() {
         <nav
             className="sticky top-0 z-50 backdrop-blur-sm"
             style={{
-                backgroundColor: "rgba(252,252,252,0.9)",
+                backgroundColor: "var(--color-bg-card)",
                 boxShadow: "0 1px 0 var(--color-border)",
             }}
         >
