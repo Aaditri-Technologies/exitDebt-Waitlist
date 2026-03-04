@@ -122,9 +122,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Preload hero animations for instant rendering */}
-        <link rel="preload" href="/animations/debt_animation.gif" as="image" type="image/gif" />
-        <link rel="preload" href="/animations/debt_gone.gif" as="image" type="image/gif" />
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
         {children}

@@ -135,7 +135,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
         <main className="flex-1">
             {/* Hero area */}
             <section className="bg-transparent">
-                <div className="max-w-6xl mx-auto px-8 py-20 lg:py-28">
+                <div className="max-w-6xl mx-auto px-8 py-16 lg:py-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                         {/* Left — Headline */}
                         <div className="lg:col-span-7">
@@ -342,17 +342,6 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                     display: submitted ? "block" : "none"
                                 }}
                             >
-                                {/* Debt-free celebration animation */}
-                                <div className="success-gif-container">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src="/animations/debt_gone.gif"
-                                        alt="You're debt free!"
-                                        className="success-gif-img"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </div>
                                 <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "var(--color-text-primary)" }}>
                                     You&apos;re on the ExitDebt early access list.
                                 </h2>
