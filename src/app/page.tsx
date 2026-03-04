@@ -7,7 +7,7 @@ import HomeContent from "@/components/HomeContent";
 import WaitlistContent from "@/components/WaitlistContent";
 import MarketingContent from "@/components/MarketingContent";
 
-const TRANSITION_MS = 450;
+const TRANSITION_MS = 250;
 
 export default function HomePage() {
   const [displayView, setDisplayView] = useState<"home" | "waitlist">("home");
@@ -47,8 +47,8 @@ export default function HomePage() {
   // CSS class for the hero slider phase
   const sliderClass =
     phase === "exiting" ? "hero-phase-exit" :
-    phase === "entering" ? "hero-phase-enter" :
-    "hero-phase-idle";
+      phase === "entering" ? "hero-phase-enter" :
+        "hero-phase-idle";
 
   return (
     <div className="min-h-screen flex flex-col relative" style={{ backgroundColor: "var(--color-bg)" }}>
@@ -57,11 +57,24 @@ export default function HomePage() {
       {/* Hero Slider — renders active view, animated via CSS keyframes */}
       <div className="w-full overflow-hidden relative" style={{ minHeight: "560px" }}>
         <div className={`hero-slider ${sliderClass}`}>
-          {displayView === "home" ? (
+          <div
+            style={{
+              opacity: displayView === "home" ? 1 : 0,
+              pointerEvents: displayView === "home" ? "auto" : "none",
+              visibility: displayView === "home" ? "visible" : "hidden",
+            }}
+          >
             <HomeContent onWaitlistClick={switchToWaitlist} />
-          ) : (
+          </div>
+          <div
+            style={{
+              opacity: displayView === "waitlist" ? 1 : 0,
+              pointerEvents: displayView === "waitlist" ? "auto" : "none",
+              visibility: displayView === "waitlist" ? "visible" : "hidden",
+            }}
+          >
             <WaitlistContent onBack={switchToHome} />
-          )}
+          </div>
         </div>
       </div>
 

@@ -30,6 +30,8 @@ export default function AdminWaitlistPage() {
     const [filterPlace, setFilterPlace] = useState("");
     const [filterDebtMin, setFilterDebtMin] = useState("");
     const [filterDebtMax, setFilterDebtMax] = useState("");
+    const [filterDateFrom, setFilterDateFrom] = useState("");
+    const [filterDateTo, setFilterDateTo] = useState("");
 
     // ── Delete Confirmation ──
     const [deleteTarget, setDeleteTarget] = useState<WaitlistEntry | null>(null);
@@ -170,16 +172,25 @@ export default function AdminWaitlistPage() {
             const debt = Number(entry.total_debt);
             if (filterDebtMin && debt < Number(filterDebtMin)) return false;
             if (filterDebtMax && debt > Number(filterDebtMax)) return false;
+
+            if (filterDateFrom && new Date(entry.created_at) < new Date(filterDateFrom)) return false;
+            if (filterDateTo) {
+                const toDate = new Date(filterDateTo);
+                toDate.setHours(23, 59, 59, 999);
+                if (new Date(entry.created_at) > toDate) return false;
+            }
             return true;
         });
-    }, [currentEntries, filterPlace, filterDebtMin, filterDebtMax]);
+    }, [currentEntries, filterPlace, filterDebtMin, filterDebtMax, filterDateFrom, filterDateTo]);
 
-    const hasActiveFilters = filterPlace || filterDebtMin || filterDebtMax;
+    const hasActiveFilters = filterPlace || filterDebtMin || filterDebtMax || filterDateFrom || filterDateTo;
 
     function clearFilters() {
         setFilterPlace("");
         setFilterDebtMin("");
         setFilterDebtMax("");
+        setFilterDateFrom("");
+        setFilterDateTo("");
     }
 
     // ── Formatters ──
@@ -221,6 +232,8 @@ export default function AdminWaitlistPage() {
         if (filterPlace) filterSummary.push(`Place: ${filterPlace}`);
         if (filterDebtMin) filterSummary.push(`Min Debt: ₹${Number(filterDebtMin).toLocaleString("en-IN")}`);
         if (filterDebtMax) filterSummary.push(`Max Debt: ₹${Number(filterDebtMax).toLocaleString("en-IN")}`);
+        if (filterDateFrom) filterSummary.push(`From: ${formatDate(filterDateFrom).split(',')[0]}`);
+        if (filterDateTo) filterSummary.push(`To: ${formatDate(filterDateTo).split(',')[0]}`);
 
         printWindow.document.write(`<!DOCTYPE html><html><head><title>ExitDebt Waitlist</title>
             <style>body{font-family:'Inter',system-ui,sans-serif;color:#1a1a2e;margin:40px}h1{font-size:20px;margin-bottom:4px}.meta{font-size:13px;color:#6b7280;margin-bottom:20px}.filters{font-size:12px;color:#134e4a;margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;padding:10px 12px;border-bottom:2px solid #1a1a2e;font-weight:600;font-size:12px}th.right{text-align:right}.summary{margin-top:16px;font-size:13px;font-weight:600;text-align:right}@media print{body{margin:20px}}</style></head><body>
@@ -381,7 +394,7 @@ export default function AdminWaitlistPage() {
                                     </button>
                                 )}
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 gap-3">
                                 <div>
                                     <label className="block text-xs font-medium mb-1" style={{ color: "var(--color-text-muted)" }}>Place (City)</label>
                                     <select
@@ -405,6 +418,20 @@ export default function AdminWaitlistPage() {
                                 <div>
                                     <label className="block text-xs font-medium mb-1" style={{ color: "var(--color-text-muted)" }}>Max Debt (₹)</label>
                                     <input type="number" value={filterDebtMax} onChange={(e) => setFilterDebtMax(e.target.value)} placeholder="e.g. 5000000"
+                                        className="w-full px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2"
+                                        style={{ backgroundColor: "var(--color-bg-soft)", border: "1px solid var(--color-border)", color: "var(--color-text-primary)" }}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-medium mb-1" style={{ color: "var(--color-text-muted)" }}>Date From</label>
+                                    <input type="date" value={filterDateFrom} onChange={(e) => setFilterDateFrom(e.target.value)}
+                                        className="w-full px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2"
+                                        style={{ backgroundColor: "var(--color-bg-soft)", border: "1px solid var(--color-border)", color: "var(--color-text-primary)" }}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-medium mb-1" style={{ color: "var(--color-text-muted)" }}>Date To</label>
+                                    <input type="date" value={filterDateTo} onChange={(e) => setFilterDateTo(e.target.value)}
                                         className="w-full px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2"
                                         style={{ backgroundColor: "var(--color-bg-soft)", border: "1px solid var(--color-border)", color: "var(--color-text-primary)" }}
                                     />

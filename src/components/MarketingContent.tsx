@@ -1,9 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick: () => void }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="w-full">
       {/* ───── FEATURES ───── */}
@@ -16,11 +30,31 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             What you&apos;ll get
           </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold"
+            className="text-3xl sm:text-4xl font-bold mb-4"
             style={{ color: "var(--color-text-primary)" }}
           >
             Everything to manage your debt
           </h2>
+
+          <div
+            className="flex justify-center animation-delay-500 mb-8 mt-[-4px]"
+            style={{
+              opacity: isScrolled ? 0 : 1,
+              transition: "opacity 0.3s ease-in-out",
+              pointerEvents: isScrolled ? "none" : "auto"
+            }}
+          >
+            <svg
+              className="w-7 h-7 animate-bounce"
+              style={{ color: "var(--color-teal)", opacity: 0.6 }}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
