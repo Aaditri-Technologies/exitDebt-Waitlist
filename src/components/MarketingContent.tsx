@@ -93,7 +93,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
           </p>
           <Link
             href="#"
-            onClick={(e) => { e.preventDefault(); onWaitlistClick(e); }}
+            onClick={(e) => { e.preventDefault(); onWaitlistClick(); }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-base font-bold text-white transition-all hover:opacity-90 active:scale-[0.98]"
             style={{ backgroundColor: "var(--color-teal)" }}
           >
