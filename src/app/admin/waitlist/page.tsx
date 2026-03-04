@@ -223,7 +223,7 @@ export default function AdminWaitlistPage() {
         if (filterDebtMax) filterSummary.push(`Max Debt: ₹${Number(filterDebtMax).toLocaleString("en-IN")}`);
 
         printWindow.document.write(`<!DOCTYPE html><html><head><title>ExitDebt Waitlist</title>
-            <style>body{font-family:'Inter',system-ui,sans-serif;color:#1a1a2e;margin:40px}h1{font-size:20px;margin-bottom:4px}.meta{font-size:13px;color:#6b7280;margin-bottom:20px}.filters{font-size:12px;color:#7300BE;margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;padding:10px 12px;border-bottom:2px solid #1a1a2e;font-weight:600;font-size:12px}th.right{text-align:right}.summary{margin-top:16px;font-size:13px;font-weight:600;text-align:right}@media print{body{margin:20px}}</style></head><body>
+            <style>body{font-family:'Inter',system-ui,sans-serif;color:#1a1a2e;margin:40px}h1{font-size:20px;margin-bottom:4px}.meta{font-size:13px;color:#6b7280;margin-bottom:20px}.filters{font-size:12px;color:#134e4a;margin-bottom:16px}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;padding:10px 12px;border-bottom:2px solid #1a1a2e;font-weight:600;font-size:12px}th.right{text-align:right}.summary{margin-top:16px;font-size:13px;font-weight:600;text-align:right}@media print{body{margin:20px}}</style></head><body>
             <h1>ExitDebt — Waitlist (${activeTab === "active" ? "Active" : "Archived"})</h1>
             <p class="meta">Printed on ${new Date().toLocaleString("en-IN")} · ${filteredData.length} entries</p>
             ${filterSummary.length > 0 ? `<p class="filters">Filters: ${filterSummary.join(" · ")}</p>` : ""}
@@ -236,7 +236,7 @@ export default function AdminWaitlistPage() {
 
     // ── Styles ──
     const tabStyle = (isActive: boolean) => ({
-        backgroundColor: isActive ? "var(--color-purple)" : "transparent",
+        backgroundColor: isActive ? "var(--color-teal)" : "transparent",
         color: isActive ? "#fff" : "var(--color-text-secondary)",
         border: isActive ? "none" : "1px solid var(--color-border)",
     });
@@ -290,7 +290,7 @@ export default function AdminWaitlistPage() {
                                     type="submit"
                                     disabled={loading}
                                     className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 disabled:opacity-50 cursor-pointer"
-                                    style={{ backgroundColor: "var(--color-purple)" }}
+                                    style={{ backgroundColor: "var(--color-teal)" }}
                                 >
                                     {loading ? "Verifying..." : "Access Dashboard"}
                                 </button>
@@ -414,7 +414,7 @@ export default function AdminWaitlistPage() {
                         {/* ── Showing count ── */}
                         <p className="text-sm mb-3" style={{ color: "var(--color-text-secondary)" }}>
                             Showing{" "}
-                            <span className="font-semibold" style={{ color: "var(--color-purple)" }}>{filteredData.length}</span>
+                            <span className="font-semibold" style={{ color: "var(--color-teal)" }}>{filteredData.length}</span>
                             {filteredData.length !== currentEntries.length && <span> of {currentEntries.length}</span>}
                             {" "}{activeTab === "active" ? "active" : "archived"} submissions
                         </p>

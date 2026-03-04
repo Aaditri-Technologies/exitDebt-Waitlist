@@ -86,7 +86,43 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Preload hero GIFs for instant rendering */}
+        {/* FAQ structured data — surfaces in AI answer engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What is ExitDebt?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is ExitDebt free to use?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, ExitDebt is 100% free for users. Join the waitlist for early access when we launch.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Does ExitDebt affect my CIBIL score?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No. ExitDebt does not perform any hard credit inquiries and has zero impact on your CIBIL or credit score.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+        {/* Preload hero animations for instant rendering */}
         <link rel="preload" href="/animations/debt_animation.gif" as="image" type="image/gif" />
         <link rel="preload" href="/animations/debt_gone.gif" as="image" type="image/gif" />
       </head>

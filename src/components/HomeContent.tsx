@@ -19,7 +19,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: (e: 
               <div
                 className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
                 style={{
-                  backgroundColor: "rgba(115,0,190,0.08)",
+                  backgroundColor: "rgba(19,78,74,0.08)",
                   color: "var(--color-teal)",
                 }}
               >
