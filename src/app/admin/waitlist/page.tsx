@@ -264,7 +264,7 @@ export default function AdminWaitlistPage() {
                                 border: "1px solid var(--color-border)",
                             }}
                         >
-                            <form onSubmit={handleAuth} className="space-y-4">
+                            <form onSubmit={handleAuth} className="space-y-4" suppressHydrationWarning>
                                 <div>
                                     <label htmlFor="secret" className="block text-sm font-medium mb-1.5" style={{ color: "var(--color-text-secondary)" }}>
                                         Admin Secret
@@ -291,6 +291,7 @@ export default function AdminWaitlistPage() {
                                     disabled={loading}
                                     className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 disabled:opacity-50 cursor-pointer"
                                     style={{ backgroundColor: "var(--color-teal)" }}
+                                    suppressHydrationWarning
                                 >
                                     {loading ? "Verifying..." : "Access Dashboard"}
                                 </button>

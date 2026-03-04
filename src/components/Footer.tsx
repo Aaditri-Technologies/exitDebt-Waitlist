@@ -46,21 +46,21 @@ export default function Footer() {
                         </p>
                         <div className="space-y-2.5">
                             <Link
-                                href="#"
+                                href="/about"
                                 className="block text-sm transition-colors"
                                 style={{ color: "var(--color-text-muted)" }}
                             >
                                 About us
                             </Link>
                             <Link
-                                href="#"
+                                href="/privacy"
                                 className="block text-sm transition-colors"
                                 style={{ color: "var(--color-text-muted)" }}
                             >
                                 Privacy Policy
                             </Link>
                             <Link
-                                href="#"
+                                href="/terms"
                                 className="block text-sm transition-colors"
                                 style={{ color: "var(--color-text-muted)" }}
                             >
