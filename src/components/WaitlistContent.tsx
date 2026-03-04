@@ -342,16 +342,16 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                     display: submitted ? "block" : "none"
                                 }}
                             >
-                                {/* Debt-free celebration animation */}
-                                <div className="success-gif-container">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src="/animations/debt_gone.gif"
-                                        alt="You're debt free!"
-                                        className="success-gif-img"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
+                                {/* Success icon */}
+                                <div className="flex justify-center mb-4">
+                                    <div
+                                        className="w-16 h-16 rounded-full flex items-center justify-center"
+                                        style={{ backgroundColor: "rgba(5,150,105,0.1)" }}
+                                    >
+                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} style={{ color: "var(--color-success)" }}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </div>
                                 </div>
                                 <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "var(--color-text-primary)" }}>
                                     You&apos;re on the ExitDebt early access list.
