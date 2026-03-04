@@ -64,7 +64,7 @@ export default function Footer() {
                                 className="block text-sm transition-colors"
                                 style={{ color: "var(--color-text-muted)" }}
                             >
-                                Terms of Service
+                                Terms &amp; Conditions
                             </Link>
                         </div>
                     </div>
@@ -79,10 +79,10 @@ export default function Footer() {
                         </p>
                         <div className="space-y-2.5">
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                support@exitdebt.in
+                                hello@exitdebt.com
                             </p>
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                Surat, India
+                                grievance@exitdebt.com
                             </p>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ export default function Footer() {
                     style={{ borderTop: "1px solid var(--color-border)" }}
                 >
                     <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
-                        © {new Date().getFullYear()} ExitDebt Technologies Pvt. Ltd. All
+                        © {new Date().getFullYear()} Aaditri Technologies. All
                         rights reserved.
                     </p>
                 </div>
