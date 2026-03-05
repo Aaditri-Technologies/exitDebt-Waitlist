@@ -20,7 +20,7 @@ function createPool(): Pool {
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 5000,
-    ssl: process.env.DB_REQUIRE_SSL === "true"
+    ssl: (process.env.DB_REQUIRE_SSL ?? (process.env.NODE_ENV === "production" ? "true" : "false")) === "true"
       ? { rejectUnauthorized: false }
       : undefined,
   });
