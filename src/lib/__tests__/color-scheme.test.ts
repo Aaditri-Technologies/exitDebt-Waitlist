@@ -132,7 +132,7 @@ describe('Component color references', () => {
     it('all components reference teal instead of purple', () => {
         for (const file of componentFiles) {
             const content = readFileSync(file, 'utf-8');
-            const relativePath = file.replace(componentDir, 'components');
+            // file path available via `file` variable if needed for debugging
             expect(content).not.toContain('--color-purple');
             expect(content).not.toContain('#7300BE');
 

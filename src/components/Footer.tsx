@@ -1,39 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     return (
         <footer
             style={{
-                backgroundColor: "rgba(252,252,252,0.9)",
+                backgroundColor: "var(--color-bg-card)",
                 borderTop: "1px solid var(--color-border)",
             }}
         >
-            <div className="max-w-6xl mx-auto px-8 py-14">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 py-6 sm:py-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-3">
-                            <div
-                                className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                                style={{ backgroundColor: "var(--color-teal)" }}
-                            >
-                                E
-                            </div>
-                            <span
-                                className="text-base font-bold tracking-tight"
-                                style={{ color: "var(--color-text-primary)" }}
-                            >
-                                ExitDebt
-                            </span>
+                            <Image
+                                src="/logo.png"
+                                alt="ExitDebt Logo"
+                                width={300}
+                                height={300}
+                                className="w-24 h-24 object-contain scale-[2]"
+                            />
                         </div>
-                        <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: "var(--color-text-muted)" }}
-                        >
-                            Understand, restructure, and exit your debt — on your terms.
-                        </p>
                     </div>
 
                     {/* Links */}
@@ -64,7 +54,7 @@ export default function Footer() {
                                 className="block text-sm transition-colors"
                                 style={{ color: "var(--color-text-muted)" }}
                             >
-                                Terms of Service
+                                Terms &amp; Conditions
                             </Link>
                         </div>
                     </div>
@@ -79,21 +69,21 @@ export default function Footer() {
                         </p>
                         <div className="space-y-2.5">
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                support@exitdebt.in
+                                admin@exitdebt.in
                             </p>
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                Surat, India
+                                contact@exitdebt.in
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    className="mt-10 pt-6"
+                    className="mt-6 pt-6"
                     style={{ borderTop: "1px solid var(--color-border)" }}
                 >
                     <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
-                        © {new Date().getFullYear()} ExitDebt Technologies Pvt. Ltd. All
+                        © {new Date().getFullYear()} Aaditri Technologies. All
                         rights reserved.
                     </p>
                 </div>

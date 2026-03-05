@@ -102,6 +102,9 @@ psql -d exitdebt -f migrate.sql
 
 # 4. Start development server
 npm run dev
+
+# 5. Run tests
+npm test
 ```
 
 ### Environment Variables
@@ -150,33 +153,57 @@ CREATE TABLE rate_limits (
 );
 ```
 
+## Testing
+
+The project includes a comprehensive test suite using **Vitest**. Run all tests with:
+
+```bash
+npm test
+```
+
+| Test File | Coverage |
+|---|---|
+| `sanitize.test.ts` | XSS prevention, debt clamping |
+| `city-state.test.ts` | City-to-state mapping, case handling |
+| `rate-limit.test.ts` | Rate limiting, DB failure fallback |
+| `session.test.ts` | Session config, env validation |
+| `color-scheme.test.ts` | Color consistency across all source files |
+| `waitlist-api.test.ts` | Input validation, bot detection, IP extraction |
+
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── page.tsx                    # Homepage
+│   ├── page.tsx                    # Homepage (grid-based view transitions)
 │   ├── layout.tsx                  # Root layout + SEO metadata + JSON-LD
-│   ├── globals.css                 # Design tokens
+│   ├── globals.css                 # Design tokens (teal color scheme)
 │   ├── robots.ts                   # robots.txt (blocks /admin, /api)
 │   ├── sitemap.ts                  # sitemap.xml for Google
 │   ├── waitlist/page.tsx           # Waitlist form
 │   ├── admin/waitlist/page.tsx     # Admin dashboard
+│   ├── __tests__/
+│   │   └── waitlist-api.test.ts    # API validation & bot detection tests
 │   └── api/
 │       ├── waitlist/route.ts       # POST — submit entry
 │       └── admin/
 │           ├── login/route.ts      # POST — admin login
+│           ├── logout/route.ts     # POST — admin logout
 │           └── waitlist/route.ts   # GET, PATCH, DELETE — admin
 ├── components/
 │   ├── Navbar.tsx
 │   ├── Footer.tsx
+│   ├── HomeContent.tsx             # Hero section
+│   ├── MarketingContent.tsx        # Features & CTA
+│   ├── WaitlistContent.tsx         # Waitlist form with validation
 │   └── CookieConsent.tsx           # Cookie consent banner
 ├── lib/
 │   ├── db.ts                       # PostgreSQL pool (globalThis cached)
 │   ├── rate-limit.ts               # PostgreSQL-backed rate limiter
 │   ├── session.ts                  # iron-session config
 │   ├── sanitize.ts                 # Input sanitization
-│   └── city-state.ts               # City → State mapping
+│   ├── city-state.ts               # City → State mapping
+│   └── __tests__/                  # Unit tests (sanitize, city-state, etc.)
 └── proxy.ts                        # Security headers (Next.js 16 proxy)
 ```
 

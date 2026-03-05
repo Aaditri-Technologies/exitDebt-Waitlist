@@ -100,7 +100,7 @@ body {
 @keyframes slideInFromBottom {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
 
   to {
@@ -110,7 +110,7 @@ body {
 }
 
 .page-transition-enter {
-  animation: slideInFromBottom 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideInFromBottom 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes fadeOut {
@@ -252,6 +252,51 @@ input[type="number"] {
   /* The JS script adds the transition dynamically */
 }
 
+/* ─── Hero Transitions ─── */
+.hero-slider {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "hero-content";
+  align-items: start;
+  min-height: auto;
+  /* responsive: avoid layout collapse on desktop, let content dictate on mobile */
+  transition: min-height 0.5s ease;
+}
+
+.hero-slider>* {
+  grid-area: hero-content;
+}
+
+.hero-phase-idle {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero-phase-exit {
+  opacity: 0;
+  transform: translateX(-40px);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.hero-phase-enter {
+  animation: slideInFromOpposite 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideInFromOpposite {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
 /* Floating labels */
 .form-group-relative {
   position: relative;
@@ -364,93 +409,31 @@ input[type="number"] {
 @keyframes hero-exit {
   0% {
     opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
+    transform: translateY(0);
   }
+
   100% {
     opacity: 0;
-    transform: scale(0.97) translateY(8px);
-    filter: blur(3px);
+    transform: translateY(-16px);
   }
 }
 
 @keyframes hero-enter {
   0% {
     opacity: 0;
-    transform: scale(0.97) translateY(-8px);
-    filter: blur(3px);
+    transform: translateY(16px);
   }
+
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
+    transform: translateY(0);
   }
 }
 
 .hero-phase-exit {
-  animation: hero-exit 450ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: hero-exit 350ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
 
 .hero-phase-enter {
-  animation: hero-enter 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* ─── Hero Animation (GIF) ─── */
-.hero-animation-container {
-  width: 280px;
-  height: 280px;
-  border-radius: 24px;
-  overflow: hidden;
-  position: relative;
-  background: var(--color-bg-soft);
-}
-
-.hero-animation-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180%;
-  height: 180%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Desktop: larger */
-@media (min-width: 1024px) {
-  .hero-animation-container {
-    width: 340px;
-    height: 340px;
-  }
-}
-
-/* Small mobile: smaller */
-@media (max-width: 480px) {
-  .hero-animation-container {
-    width: 220px;
-    height: 220px;
-    border-radius: 20px;
-  }
-}
-
-/* Waitlist success GIF */
-.success-gif-container {
-  width: 180px;
-  height: 180px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 0 auto 1.5rem;
-  background: var(--color-bg-soft);
-  position: relative;
-}
-
-.success-gif-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180%;
-  height: 180%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  object-position: center;
+  animation: hero-enter 450ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }

@@ -135,8 +135,8 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
         <main className="flex-1">
             {/* Hero area */}
             <section className="bg-transparent">
-                <div className="max-w-6xl mx-auto px-8 py-16 lg:py-14">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
                         {/* Left — Headline */}
                         <div className="lg:col-span-7">
                             {onBack && (
@@ -160,7 +160,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                             </div>
 
                             <h1
-                                className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight mb-6"
+                                className="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight mb-4"
                                 style={{ color: "var(--color-text-primary)" }}
                             >
                                 Join the{" "}
@@ -169,7 +169,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                             </h1>
 
                             <p
-                                className="text-base leading-relaxed max-w-lg mb-8"
+                                className="text-sm sm:text-base leading-relaxed max-w-lg mb-6"
                                 style={{ color: "var(--color-text-secondary)" }}
                             >
                                 Be the first to access India&apos;s smartest debt management platform.
@@ -330,6 +330,12 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                             "Join Waitlist"
                                         )}
                                     </button>
+                                    <p
+                                        className="text-xs text-center mt-3 mt-4"
+                                        style={{ color: "var(--color-text-muted)" }}
+                                    >
+                                        Understand, restructure, and exit your debt — on your terms.
+                                    </p>
                                 </form>
                             </div>
 
@@ -342,6 +348,17 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                     display: submitted ? "block" : "none"
                                 }}
                             >
+                                {/* Success icon */}
+                                <div className="flex justify-center mb-4">
+                                    <div
+                                        className="w-16 h-16 rounded-full flex items-center justify-center"
+                                        style={{ backgroundColor: "rgba(5,150,105,0.1)" }}
+                                    >
+                                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} style={{ color: "var(--color-success)" }}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </div>
+                                </div>
                                 <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "var(--color-text-primary)" }}>
                                     You&apos;re on the ExitDebt early access list.
                                 </h2>

@@ -1,33 +1,32 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
     return (
         <nav
             className="sticky top-0 z-50 backdrop-blur-sm"
             style={{
-                backgroundColor: "rgba(252,252,252,0.9)",
+                backgroundColor: "var(--color-bg-card)",
                 boxShadow: "0 1px 0 var(--color-border)",
             }}
         >
             <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                        style={{ backgroundColor: "var(--color-teal)" }}
-                    >
-                        E
-                    </div>
-                    <span
-                        className="text-lg font-bold tracking-tight"
-                        style={{ color: "var(--color-text-primary)" }}
-                    >
-                        ExitDebt
-                    </span>
+                    <Image
+                        src="/logo.png"
+                        alt="ExitDebt Logo"
+                        width={200}
+                        height={200}
+                        className="w-16 h-16 object-contain scale-[2.5] origin-left mt-1"
+                        priority
+                    />
                 </Link>
+
+                {/* Right section removed */}
             </div>
-        </nav>
+        </nav >
     );
 }

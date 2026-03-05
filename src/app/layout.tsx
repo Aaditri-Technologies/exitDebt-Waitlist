@@ -129,6 +129,7 @@ export default function RootLayout({
             }),
           }}
         />
+
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
         {/* Google Tag Manager — noscript fallback handled by GTM component */}

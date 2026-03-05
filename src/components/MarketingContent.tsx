@@ -7,34 +7,22 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
   return (
     <div className="w-full">
       {/* ───── FEATURES ───── */}
-      <section className="max-w-6xl mx-auto px-8 py-20 lg:py-24">
-        <div className="text-center mb-14">
-          {/* <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 pt-2 sm:pt-6 lg:pb-16 lg:pt-10">
+        <div className="text-center mb-6 sm:mb-8">
+          <p
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3"
             style={{ color: "var(--color-teal)" }}
           >
             What you&apos;ll get
-          </p> */}
+          </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold"
+            className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4"
             style={{ color: "var(--color-text-primary)" }}
           >
             Everything to manage your debt
           </h2>
-          <div className="mt-8 flex justify-center animate-bounce">
-            <svg
-              className="w-6 h-6"
-              style={{ color: "var(--color-teal)" }}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
               icon: (
@@ -63,7 +51,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
               title: "Smart Settlement",
               desc: "Negotiate better terms and save thousands on interest payments.",
             },
-          ].map((feature, i) => (
+          ].map((feature) => (
             <div
               key={feature.title}
               className={`rounded-2xl p-7 hover-lift`}
@@ -93,7 +81,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
 
       {/* ───── BOTTOM CTA ───── */}
       <section style={{ backgroundColor: "var(--color-bg-soft)" }}>
-        <div className="max-w-6xl mx-auto px-8 py-16 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 text-center">
           <h2
             className="text-2xl sm:text-3xl font-bold mb-3"
             style={{ color: "var(--color-text-primary)" }}
