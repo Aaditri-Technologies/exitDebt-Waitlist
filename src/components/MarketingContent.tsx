@@ -1,62 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick: () => void }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
     <div className="w-full">
       {/* ───── FEATURES ───── */}
-      <section className="max-w-6xl mx-auto px-8 py-20 lg:py-24">
-        <div className="text-center mb-14">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 pt-2 sm:pt-6 lg:pb-16 lg:pt-10">
+        <div className="text-center mb-6 sm:mb-8">
           <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
+            className="text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3"
             style={{ color: "var(--color-teal)" }}
           >
             What you&apos;ll get
           </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
+            className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4"
             style={{ color: "var(--color-text-primary)" }}
           >
             Everything to manage your debt
           </h2>
-
-          <div
-            className="flex justify-center animation-delay-500 mb-8 mt-[-4px]"
-            style={{
-              opacity: isScrolled ? 0 : 1,
-              transition: "opacity 0.3s ease-in-out",
-              pointerEvents: isScrolled ? "none" : "auto"
-            }}
-          >
-            <svg
-              className="w-7 h-7 animate-bounce"
-              style={{ color: "var(--color-teal)", opacity: 0.6 }}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-            </svg>
-          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
               icon: (
@@ -115,7 +81,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
 
       {/* ───── BOTTOM CTA ───── */}
       <section style={{ backgroundColor: "var(--color-bg-soft)" }}>
-        <div className="max-w-6xl mx-auto px-8 py-16 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 text-center">
           <h2
             className="text-2xl sm:text-3xl font-bold mb-3"
             style={{ color: "var(--color-text-primary)" }}

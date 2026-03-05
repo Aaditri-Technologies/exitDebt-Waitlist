@@ -7,13 +7,13 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
   return (
     <div className="w-full">
       {/* ───── HERO ───── */}
-      <section className="bg-transparent" style={{ minHeight: "420px" }}>
-        <div className="max-w-6xl mx-auto px-8 py-16 lg:py-24">
+      <section className="bg-transparent">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-0 sm:py-4 lg:py-8">
 
           <div className="max-w-2xl mx-auto text-center">
             {/* Badge */}
             <div
-              className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-6"
+              className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold mb-4 sm:mb-6"
               style={{
                 backgroundColor: "rgba(19,78,74,0.08)",
                 color: "var(--color-teal)",
@@ -23,7 +23,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
             </div>
 
             <h1
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight mb-6"
+              className="text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] sm:leading-[1.15] tracking-tight mb-3 sm:mb-6"
               style={{ color: "var(--color-text-primary)" }}
             >
               Exit your debt,{" "}
@@ -31,7 +31,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
             </h1>
 
             <p
-              className="text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8"
+              className="text-sm sm:text-lg leading-relaxed max-w-lg mx-auto mb-6 sm:mb-8"
               style={{ color: "var(--color-text-secondary)" }}
             >
               India&apos;s smartest debt management platform. Understand, restructure,
@@ -40,7 +40,7 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
           </div>
 
           {/* CTA — centered below both columns */}
-          <div className="flex justify-center mt-8 lg:mt-10">
+          <div className="flex justify-center mt-2 sm:mt-6 lg:mt-8">
             <Link
               href="#"
               onClick={(e) => { e.preventDefault(); onWaitlistClick(); }}

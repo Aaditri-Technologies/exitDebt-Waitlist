@@ -10,8 +10,8 @@ export default function Footer() {
                 borderTop: "1px solid var(--color-border)",
             }}
         >
-            <div className="max-w-6xl mx-auto px-8 py-14">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 py-6 sm:py-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-3">
@@ -28,12 +28,6 @@ export default function Footer() {
                                 ExitDebt
                             </span>
                         </div>
-                        <p
-                            className="text-sm leading-relaxed"
-                            style={{ color: "var(--color-text-muted)" }}
-                        >
-                            Understand, restructure, and exit your debt — on your terms.
-                        </p>
                     </div>
 
                     {/* Links */}
@@ -79,17 +73,17 @@ export default function Footer() {
                         </p>
                         <div className="space-y-2.5">
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                hello@exitdebt.com
+                                admin@exitdebt.in
                             </p>
                             <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
-                                grievance@exitdebt.com
+                                contact@exitdebt.in
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    className="mt-10 pt-6"
+                    className="mt-6 pt-6"
                     style={{ borderTop: "1px solid var(--color-border)" }}
                 >
                     <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>

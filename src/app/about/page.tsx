@@ -17,7 +17,7 @@ export default function AboutPage() {
         >
             <Navbar />
 
-            <main className="flex-1 max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24">
+            <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-16">
                 {/* Back link */}
                 <Link
                     href="/"

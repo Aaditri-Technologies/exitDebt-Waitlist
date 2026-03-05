@@ -19,7 +19,7 @@ export default function TermsPage() {
         >
             <Navbar />
 
-            <main className="flex-1 max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-24">
+            <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-16">
                 <Link
                     href="/"
                     className="inline-flex items-center gap-1.5 text-sm font-medium mb-10 transition-colors"
@@ -403,7 +403,7 @@ export default function TermsPage() {
                                             Email
                                         </td>
                                         <td className="px-4 py-3">
-                                            hello@exitdebt.com
+                                            admin@exitdebt.in
                                         </td>
                                     </tr>
                                     <tr
@@ -443,7 +443,7 @@ export default function TermsPage() {
                                             Grievance Email
                                         </td>
                                         <td className="px-4 py-3">
-                                            grievance@exitdebt.com
+                                            contact@exitdebt.in
                                         </td>
                                     </tr>
                                     <tr>
