@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GTM_CONTAINER_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,6 +65,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* Google Analytics 4 — loaded async via @next/third-parties */}
+        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
         {/* JSON-LD Structured Data for AEO (Answer Engine Optimization) */}
         <script
           type="application/ld+json"
@@ -124,6 +131,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
+        {/* Google Tag Manager — noscript fallback handled by GTM component */}
+        {GTM_CONTAINER_ID && <GoogleTagManager gtmId={GTM_CONTAINER_ID} />}
         {children}
         <CookieConsent />
       </body>
