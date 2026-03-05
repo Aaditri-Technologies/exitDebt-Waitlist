@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     return (
@@ -15,18 +16,13 @@ export default function Footer() {
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-3">
-                            <div
-                                className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-                                style={{ backgroundColor: "var(--color-teal)" }}
-                            >
-                                E
-                            </div>
-                            <span
-                                className="text-base font-bold tracking-tight"
-                                style={{ color: "var(--color-text-primary)" }}
-                            >
-                                ExitDebt
-                            </span>
+                            <Image
+                                src="/logo.png"
+                                alt="ExitDebt Logo"
+                                width={300}
+                                height={300}
+                                className="w-24 h-24 object-contain scale-[2]"
+                            />
                         </div>
                     </div>
 

@@ -20,7 +20,7 @@ function createPool(): Pool {
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 5000,
-    ssl: process.env.DATABASE_URL?.includes("rds.amazonaws.com")
+    ssl: process.env.DB_REQUIRE_SSL === "true"
       ? { rejectUnauthorized: false }
       : undefined,
   });
