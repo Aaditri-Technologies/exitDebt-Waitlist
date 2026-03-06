@@ -458,7 +458,7 @@ export default function TermsPage() {
                                             Address
                                         </td>
                                         <td className="px-4 py-3">
-                                            [Registered Office Address]
+                                            Surat, Gujarat, India
                                         </td>
                                     </tr>
                                 </tbody>

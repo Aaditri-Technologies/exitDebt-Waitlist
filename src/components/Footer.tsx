@@ -15,7 +15,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
                     {/* Brand */}
                     <div>
-                        <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2 mb-3 ml-8 sm:ml-0">
                             <Image
                                 src="/logo.png"
                                 alt="ExitDebt Logo"
