@@ -19,7 +19,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4"
             style={{ color: "var(--color-text-primary)" }}
           >
-            Everything to manage your debt
+            India&apos;s Best Debt Relief & Management Solutions
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -86,7 +86,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             className="text-2xl sm:text-3xl font-bold mb-3"
             style={{ color: "var(--color-text-primary)" }}
           >
-            Ready to take control of your debt?
+            Ready to exit your debt and become debt-free?
           </h2>
           <p className="text-sm mb-6" style={{ color: "var(--color-text-secondary)" }}>
             Join the waitlist today and be the first to know when we launch.

@@ -26,8 +26,8 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
               className="text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] sm:leading-[1.15] tracking-tight mb-3 sm:mb-6"
               style={{ color: "var(--color-text-primary)" }}
             >
-              We make debt{" "}
-              <span style={{ color: "var(--color-teal)" }}>Dissappear faster.</span>
+              ExitDebt: We make debt{" "}
+              <span style={{ color: "var(--color-teal)" }}>Disappear faster.</span>
             </h1>
 
             <p

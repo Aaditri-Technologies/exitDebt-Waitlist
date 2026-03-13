@@ -17,15 +17,16 @@ export const metadata: Metadata = {
   description:
     "Join the ExitDebt waitlist. India's smartest debt management platform — understand, restructure, and become debt-free faster. No CIBIL impact. 100% free.",
   keywords: [
+    "ExitDebt",
     "debt management India",
-    "debt relief",
-    "loan settlement",
+    "debt relief India",
+    "loan settlement India",
     "debt restructuring",
     "financial health",
-    "CIBIL score",
-    "debt free",
-    "ExitDebt",
-    "waitlist",
+    "CIBIL score impact",
+    "debt free faster",
+    "credit card debt relief",
+    "personal loan settlement",
   ],
   metadataBase: new URL("https://exitdebt.in"),
   alternates: {
@@ -99,7 +100,7 @@ export default function RootLayout({
                   name: "What is ExitDebt?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score.",
+                  text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score. Exit your debt on your own terms.",
                   },
                 },
                 {
