@@ -81,7 +81,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
 
       <div className="sr-only">
         {/* ───── WHAT IS EXITDEBT (Brand Definition) ───── */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 border-t border-gray-100">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 border-t border-gray-100">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>
@@ -91,7 +91,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
                 ExitDebt is a fintech platform built for individuals in India who are struggling with debt from credit cards, personal loans, or multiple EMI repayments. Unlike general financial advice platforms, ExitDebt provides a structured, data-driven approach: it assesses your Debt Health Score, develops a personalised repayment or restructuring strategy, and offers creditor support services to stop harassment and negotiate better terms on your behalf.
               </p>
             </div>
-            <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+            <div className="bg-[#f8fafc] rounded-3xl p-8 border border-gray-100">
               <h3 className="text-xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>Understanding Debt Restructuring in India</h3>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--color-text-secondary)" }}>
                 Debt restructuring is the process of renegotiating the terms of an existing loan to make it more manageable. This can involve extending tenure, reducing interest rates, or converting credit card balances into structured EMIs.
@@ -104,17 +104,21 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
         </section>
 
         {/* ───── COMPARISON TABLE ───── */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 bg-[#fcfdfd] border-y border-gray-100">
-          <div className="text-center mb-10">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 bg-[#fcfdfd] border-y border-gray-100 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-50/50 rounded-full blur-3xl -mr-32 -mt-32"></div>
+          <div className="text-center mb-12 relative z-10">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>
               Debt Consolidation vs. Debt Settlement
             </h2>
+            <p className="text-sm max-w-xl mx-auto" style={{ color: "var(--color-text-secondary)" }}>
+              Choosing the right path is critical for your financial future and credit health.
+            </p>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto relative z-10">
             <table className="w-full text-left border-collapse bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <thead>
                 <tr className="bg-gray-50">
-                  <th className="p-5 text-sm font-bold border-b border-gray-100">Feature</th>
+                  <th className="p-5 text-sm font-bold border-b border-gray-100">Factor</th>
                   <th className="p-5 text-sm font-bold border-b border-gray-100" style={{ color: "var(--color-teal)" }}>Debt Consolidation</th>
                   <th className="p-5 text-sm font-bold border-b border-gray-100 text-red-600">Debt Settlement</th>
                 </tr>
@@ -122,41 +126,46 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
               <tbody className="text-sm">
                 <tr>
                   <td className="p-5 border-b border-gray-100 font-semibold">Definition</td>
-                  <td className="p-5 border-b border-gray-100">Combining debts into one loan</td>
-                  <td className="p-5 border-b border-gray-100">Negotiating a lower payout</td>
+                  <td className="p-5 border-b border-gray-100">Combine multiple debts into one loan</td>
+                  <td className="p-5 border-b border-gray-100">Negotiate creditors to accept lower amount</td>
                 </tr>
                 <tr>
-                  <td className="p-5 border-b border-gray-100 font-semibold">Credit Score Impact</td>
-                  <td className="p-5 border-b border-gray-100">Minimal to positive impact</td>
-                  <td className="p-5 border-b border-gray-100">Severe negative impact</td>
+                  <td className="p-5 border-b border-gray-100 font-semibold">Impact on CIBIL</td>
+                  <td className="p-5 border-b border-gray-100">Minimal if managed well</td>
+                  <td className="p-5 border-b border-gray-100">Significant negative impact</td>
                 </tr>
                 <tr>
                   <td className="p-5 border-b border-gray-100 font-semibold">Legal Status</td>
-                  <td className="p-5 border-b border-gray-100">Fully bank-supported</td>
-                  <td className="p-5 border-b border-gray-100">Last resort negotiation</td>
+                  <td className="p-5 border-b border-gray-100">Fully legal, offered by banks</td>
+                  <td className="p-5 border-b border-gray-100">Legal but marks loan as &apos;settled&apos;</td>
                 </tr>
                 <tr>
-                  <td className="p-5 border-b border-gray-100 font-semibold">ExitDebt Recommendation</td>
-                  <td className="p-5 border-b border-gray-100">Primary Approach</td>
-                  <td className="p-5 border-b border-gray-100">Case-by-case basis</td>
+                  <td className="p-5 border-b border-gray-100 font-semibold">Interest Cost</td>
+                  <td className="p-5 border-b border-gray-100">Typically lower interest rate</td>
+                  <td className="p-5 border-b border-gray-100">No further interest; principal reduced</td>
+                </tr>
+                <tr>
+                  <td className="p-5 border-b border-gray-100 font-semibold font-bold" style={{ color: "var(--color-teal)" }}>ExitDebt Recommendation</td>
+                  <td className="p-5 border-b border-gray-100 font-medium">Primary approach for most</td>
+                  <td className="p-5 border-b border-gray-100">Last resort only</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16">
             <div>
-              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>How to Get Out of Credit Card Debt in India</h2>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                Credit card debt is one of the most expensive forms of debt in India, with annual interest rates typically ranging from 30% to 42%. Left unmanaged, interest compounds rapidly. To exit effectively: (1) Stop adding new charges. (2) Audit your total outstanding balance. (3) Negotiate an EMI conversion. (4) Use ExitDebt to identify the fastest repayment path based on your income.
+              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>How to Get Out of Credit Card Debt in India?</h2>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                Credit card debt is one of the most expensive forms of debt in India, with annual interest rates typically ranging from 30% to 42%. A structured approach includes: 1. Audit total outstanding balances. 2. Stop using cards for new purchases. 3. Request a balance transfer or EMI conversion. 4. Follow the Debt Avalanche or Snowball method. 5. Use ExitDebt&apos;s Debt Health Score tool to identify the fastest path.
               </p>
             </div>
             <div>
-              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>How to Reduce EMI Burden in India</h2>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                Managing multiple EMIs across loans can be mentally exhausting. Effective strategies to reduce your burden include loan tenure extension, interest rate renegotiation, and debt consolidation. Combining multiple high-interest loans into a single lower-interest loan simplifies repayment and often reduces total monthly outgo significantly.
+              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>How to Reduce EMI Burden in India?</h2>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                When EMI payments consume more than 50% of monthly income, restructuring may be necessary. Effective strategies include: Loan tenure extension to reduce monthly outgo, interest rate renegotiation if your credit profile has improved, and debt consolidation to combine multiple high-interest loans into one.
               </p>
             </div>
           </div>

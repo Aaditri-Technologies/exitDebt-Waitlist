@@ -26,10 +26,11 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
             <div className="sr-only">
               <h1>Get Out of Debt Faster — India&apos;s Trusted Debt Restructuring Platform</h1>
               <p>
-                ExitDebt is India&apos;s structured debt management platform that helps individuals resolve credit card debt, 
-                personal loan obligations, and EMI burdens through personalised financial planning and debt restructuring. 
-                If you are overwhelmed by multiple loan repayments or rising interest costs, ExitDebt analyses your complete debt profile, 
-                builds a legally compliant restructuring strategy, and guides you step-by-step until you are financially free.
+                ExitDebt is India&apos;s structured debt management platform that helps individuals resolve credit card debt,
+                personal loan obligations, and EMI burdens through personalised financial planning and debt restructuring.
+                If you are overwhelmed by multiple loan repayments or rising interest costs, ExitDebt analyses your
+                complete debt profile, builds a legally compliant restructuring strategy, and guides you step-by-step
+                until you are financially free.
               </p>
             </div>
 

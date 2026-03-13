@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     "Struggling with credit card debt, EMIs, or personal loans in India? ExitDebt helps you restructure debt, reduce interest burden, and become debt-free faster.",
   keywords: [
     "ExitDebt",
+    "Debt Restructuring India",
+    "Credit Card Debt Relief India",
     "debt management India",
     "debt relief India",
     "loan settlement India",
@@ -29,7 +31,6 @@ export const metadata: Metadata = {
     "personal loan settlement",
     "EMI management",
     "debt health analysis",
-    "debt payback strategy",
     "loan repayment strategy",
     "interest burden",
     "creditor negotiation",
