@@ -11,11 +11,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "ExitDebt – India's Smartest Debt Management Platform",
+    default: "Debt Restructuring India | Exit Debt Faster | ExitDebt",
     template: "%s | ExitDebt",
   },
   description:
-    "Join the ExitDebt waitlist. India's smartest debt management platform — understand, restructure, and become debt-free faster. No CIBIL impact. 100% free.",
+    "Struggling with credit card debt, EMIs, or personal loans in India? ExitDebt helps you restructure debt, reduce interest burden, and become debt-free faster.",
   keywords: [
     "ExitDebt",
     "debt management India",
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "EMI management",
     "debt health analysis",
     "debt payback strategy",
+    "loan repayment strategy",
+    "interest burden",
+    "creditor negotiation",
   ],
   metadataBase: new URL("https://exitdebt.in"),
   alternates: {
@@ -71,20 +74,18 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "ExitDebt",
-              alternateName: "ExitDebt Technologies",
-              url: "https://exitdebt.in",
-              logo: "https://exitdebt.in/logo.png",
-              sameAs: [
-                "https://twitter.com/exitdebt",
-                "https://linkedin.com/company/exitdebt"
-              ],
-              contactPoint: {
+              "name": "ExitDebt",
+              "alternateName": "ExitDebt India",
+              "url": "https://exitdebt.in",
+              "logo": "https://exitdebt.in/logo.png",
+              "description": "ExitDebt is India's structured debt management and restructuring platform for individuals with credit card debt, personal loans, and EMI obligations.",
+              "foundingOrganization": "Aaditri Technologies",
+              "areaServed": "IN",
+              "serviceType": ["Debt Restructuring", "Debt Management", "Financial Planning", "Credit Counselling"],
+              "contactPoint": {
                 "@type": "ContactPoint",
-                telephone: "+91-XXXXXXXXXX",
-                contactType: "customer service",
-                areaServed: "IN",
-                availableLanguage: "en"
+                "email": "contact@exitdebt.in",
+                "contactType": "customer support"
               }
             }),
           }}
@@ -122,31 +123,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "HowTo",
-              name: "A Simple 4-Step Plan to Exit Your Debt with ExitDebt",
-              description: "ExitDebt analyzes your liabilities, builds a personalized strategy, and helps you restructure repayments so you can become debt-free faster.",
-              step: [
-                {
-                  "@type": "HowToStep",
-                  name: "Join ExitDebt",
-                  text: "Sign up on ExitDebt's platform to secure early access for debt assessment.",
-                  url: "https://exitdebt.in#waitlist",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Debt Health Analysis",
-                  text: "Understand your real debt health across loans, cards, and EMIs.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Personalized Strategy",
-                  text: "Receive a customized restructuring and repayment plan tailored to your financial situation.",
-                },
-                {
-                  "@type": "HowToStep",
-                  name: "Financial Freedom",
-                  text: "Execute the plan and move toward a debt-free life at your terms.",
-                },
-              ],
+              "name": "How to Get Out of Credit Card Debt in India",
+              "description": "A step-by-step process to clear credit card debt and become debt-free in India.",
+              "step": [
+                { "@type": "HowToStep", "name": "Audit your debt", "text": "List all outstanding balances, interest rates, and minimum payments." },
+                { "@type": "HowToStep", "name": "Stop adding new debt", "text": "Avoid new credit card purchases while repaying existing balances." },
+                { "@type": "HowToStep", "name": "Choose a repayment strategy", "text": "Use the Avalanche or Snowball method based on your financial situation." },
+                { "@type": "HowToStep", "name": "Negotiate with creditors", "text": "Request EMI conversion or restructuring from your bank or card issuer." },
+                { "@type": "HowToStep", "name": "Create a structured plan", "text": "Use ExitDebt to build a personalised debt exit roadmap." }
+              ]
             }),
           }}
         />
@@ -157,48 +142,88 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: [
+              "mainEntity": [
                 {
                   "@type": "Question",
-                  name: "What is ExitDebt?",
-                  acceptedAnswer: {
+                  "name": "What is debt restructuring in India?",
+                  "acceptedAnswer": {
                     "@type": "Answer",
-                    text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score. Exit your debt at your terms using our proprietary debt health score.",
-                  },
+                    "text": "Debt restructuring in India is the process of modifying the terms of an existing loan or credit obligation to make repayment more manageable. This can include extending the loan tenure, reducing the interest rate, or consolidating multiple debts. It is legally recognised in India under RBI guidelines."
+                  }
                 },
                 {
                   "@type": "Question",
-                  name: "Can ExitDebt help with credit card debt in India?",
-                  acceptedAnswer: {
+                  "name": "Is debt restructuring legal in India?",
+                  "acceptedAnswer": {
                     "@type": "Answer",
-                    text: "Yes, ExitDebt specializes in helping Indian users manage and restructure high-interest credit card debt and personal loans through professional debt relief strategies.",
-                  },
+                    "text": "Yes, debt restructuring is completely legal in India. The Reserve Bank of India (RBI) has established guidelines allowing banks, NBFCs, and other lenders to restructure loans for borrowers experiencing financial stress."
+                  }
                 },
                 {
                   "@type": "Question",
-                  name: "Is ExitDebt free to use?",
-                  acceptedAnswer: {
+                  "name": "How to get out of credit card debt in India?",
+                  "acceptedAnswer": {
                     "@type": "Answer",
-                    text: "Yes, ExitDebt is 100% free for users. Join the waitlist for early access to our debt management tools when we launch.",
-                  },
+                    "text": "To get out of credit card debt in India: (1) Stop adding new charges. (2) List all outstanding balances and interest rates. (3) Prioritise paying off high-interest cards. (4) Consider EMI conversion. (5) Use a debt management platform like ExitDebt."
+                  }
                 },
                 {
                   "@type": "Question",
-                  name: "What is the ExitDebt Health Analysis?",
-                  acceptedAnswer: {
+                  "name": "How to reduce EMI burden in India?",
+                  "acceptedAnswer": {
                     "@type": "Answer",
-                    text: "The ExitDebt Health Analysis is a deep dive into your real debt health across loans, credit cards, and EMIs. It provides the foundation for your personalized debt repayment strategy.",
-                  },
+                    "text": "To reduce EMI burden, consider: (1) Requesting loan tenure extension. (2) Refinancing at lower rates. (3) Consolidating multiple loans. (4) Making partial prepayments. ExitDebt can analyze your situation and recommend the most effective strategy."
+                  }
                 },
                 {
                   "@type": "Question",
-                  name: "Does ExitDebt affect my CIBIL score?",
-                  acceptedAnswer: {
+                  "name": "What is the difference between debt consolidation and debt settlement?",
+                  "acceptedAnswer": {
                     "@type": "Answer",
-                    text: "No. ExitDebt does not perform any hard credit inquiries and has zero impact on your CIBIL or credit score during the assessment phase.",
-                  },
+                    "text": "Debt consolidation combines multiple debts into a single lower-interest loan without reducing principal. Debt settlement involves negotiating a lower payment, which negatively impacts CIBIL scores. Consolidation is generally preferred for stable borrowers."
+                  }
                 },
-              ],
+                {
+                  "@type": "Question",
+                  "name": "What is a Debt Health Score?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Debt Health Score assesses your debt profile condition, considering outstanding debt, EMI-to-income ratio, repayment history, and more. ExitDebt uses this score to identify the most effective path to being debt-free."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does debt restructuring affect CIBIL score?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Debt restructuring can be flagged on credit reports, but it is far less damaging than defaults or settlements. Proactively restructuring before missing EMIs is better for long-term credit health."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is ExitDebt?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ExitDebt is a fintech platform based in India providing structured debt management and restructuring services for credit card debt, personal loans, and EMIs. It is operated by Aaditri Technologies."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I manage multiple loans with one plan?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, ExitDebt coordinate multiple loan obligations—including credit cards, personal loans, and vehicle EMIs—into a single repayment strategy to reduce your overall interest burden."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long does it take to become debt-free?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Timeline varies by debt amount and income, but ExitDebt's strategy is designed to accelerate the process. Many users reduce their debt-free timeline by 30-50% compared to uncoordinated minimum payments."
+                  }
+                }
+              ]
             }),
           }}
         />
