@@ -125,18 +125,38 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
                   <td className="p-5 border-b border-gray-100">Combining debts into one loan</td>
                   <td className="p-5 border-b border-gray-100">Negotiating a lower payout</td>
                 </tr>
+                <tr>
+                  <td className="p-5 border-b border-gray-100 font-semibold">Credit Score Impact</td>
+                  <td className="p-5 border-b border-gray-100">Minimal to positive impact</td>
+                  <td className="p-5 border-b border-gray-100">Severe negative impact</td>
+                </tr>
+                <tr>
+                  <td className="p-5 border-b border-gray-100 font-semibold">Legal Status</td>
+                  <td className="p-5 border-b border-gray-100">Fully bank-supported</td>
+                  <td className="p-5 border-b border-gray-100">Last resort negotiation</td>
+                </tr>
+                <tr>
+                  <td className="p-5 border-b border-gray-100 font-semibold">ExitDebt Recommendation</td>
+                  <td className="p-5 border-b border-gray-100">Primary Approach</td>
+                  <td className="p-5 border-b border-gray-100">Case-by-case basis</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        {/* ───── EDUCATIONAL ARTICLES ───── */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>How to Get Out of Credit Card Debt in India</h2>
               <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                Credit card debt is one of the most expensive forms of debt in India...
+                Credit card debt is one of the most expensive forms of debt in India, with annual interest rates typically ranging from 30% to 42%. Left unmanaged, interest compounds rapidly. To exit effectively: (1) Stop adding new charges. (2) Audit your total outstanding balance. (3) Negotiate an EMI conversion. (4) Use ExitDebt to identify the fastest repayment path based on your income.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>How to Reduce EMI Burden in India</h2>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
+                Managing multiple EMIs across loans can be mentally exhausting. Effective strategies to reduce your burden include loan tenure extension, interest rate renegotiation, and debt consolidation. Combining multiple high-interest loans into a single lower-interest loan simplifies repayment and often reduces total monthly outgo significantly.
               </p>
             </div>
           </div>
