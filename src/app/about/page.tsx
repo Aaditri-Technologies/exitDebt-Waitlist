@@ -52,7 +52,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div id="articles-section">
-            <h3 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>Topical Authority</h3>
+            <h3 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>Expert Guides</h3>
             <p className="mb-4" style={{ color: "var(--color-text-secondary)" }}>
               Explore our core pillars of debt management in India:
             </p>
