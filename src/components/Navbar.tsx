@@ -27,7 +27,7 @@ export default function Navbar() {
                 
                 <div className="flex items-center gap-6">
                     <Link 
-                        href="/about#articles-section" 
+                        href="/about" 
                         className="text-sm font-bold transition-colors hover:text-teal-600"
                         style={{ color: "var(--color-text-primary)" }}
                     >
