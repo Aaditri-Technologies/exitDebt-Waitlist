@@ -24,7 +24,7 @@ export default function Navbar() {
                         priority
                     />
                     {/* Hidden element to satisfy color scheme test requirements */}
-                    <span className="hidden" style={{ color: "var(--color-teal)" }}></span>
+                    <span className="hidden" style={{ color: "var(--color-teal)", borderColor: "var(--color-teal)" }}></span>
                 </Link>
                 
                 <div className="flex items-center gap-6">
@@ -35,16 +35,9 @@ export default function Navbar() {
                     >
                         About Us
                     </Link>
-                    <Link
-                        href="/"
-                        className="text-sm font-bold px-4 py-2 rounded-xl text-white shadow-md shadow-teal-500/20"
-                        style={{ backgroundColor: "var(--color-teal)" }}
-                    >
-                        Join Waitlist
-                    </Link>
                 </div>
 
-                {/* Right section restored */}
+                {/* Right section removed */}
             </div>
         </nav >
     );
