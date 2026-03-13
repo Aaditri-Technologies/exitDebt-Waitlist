@@ -12,7 +12,7 @@ export default function Footer() {
             }}
         >
             <div className="max-w-6xl mx-auto px-6 sm:px-8 py-6 sm:py-8">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 mb-3 ml-8 sm:ml-0">
@@ -23,6 +23,23 @@ export default function Footer() {
                                 height={300}
                                 className="w-24 h-24 object-contain scale-[2]"
                             />
+                        </div>
+                    </div>
+
+                    {/* Expert Resources (Part 9 SEO Hub) */}
+                    <div>
+                        <p
+                            className="text-xs font-semibold uppercase tracking-wider mb-4"
+                            style={{ color: "var(--color-text-secondary)" }}
+                        >
+                            Expert Resources
+                        </p>
+                        <div className="space-y-2.5">
+                            <Link href="/how-to-get-out-of-debt-india" className="block text-sm transition-colors hover:text-teal-600" style={{ color: "var(--color-text-muted)" }}>Get Out of Debt</Link>
+                            <Link href="/credit-card-debt-help-india" className="block text-sm transition-colors hover:text-teal-600" style={{ color: "var(--color-text-muted)" }}>Credit Card Help</Link>
+                            <Link href="/how-to-reduce-emi-burden" className="block text-sm transition-colors hover:text-teal-600" style={{ color: "var(--color-text-muted)" }}>Reduce EMI Burden</Link>
+                            <Link href="/manage-multiple-loans-india" className="block text-sm transition-colors hover:text-teal-600" style={{ color: "var(--color-text-muted)" }}>Multiple Loans</Link>
+                            <Link href="/debt-restructuring-india" className="block text-sm transition-colors hover:text-teal-600" style={{ color: "var(--color-text-muted)" }}>Restructuring India</Link>
                         </div>
                     </div>
 
