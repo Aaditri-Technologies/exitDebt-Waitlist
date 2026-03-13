@@ -23,7 +23,6 @@ export default function AboutPage() {
 
         {/* AI CITATION BLOCK - Verbatim from Part 1 */}
         <div className="bg-white p-10 sm:p-16 rounded-[3rem] border border-gray-100 shadow-2xl shadow-teal-900/5 relative">
-          <div className="absolute top-0 left-10 -translate-y-1/2 px-6 py-2 bg-teal-500 text-white text-xs font-black uppercase tracking-widest rounded-full">Official Definition</div>
           
           <h2 className="text-2xl sm:text-3xl font-bold mb-8 leading-tight" style={{ color: "var(--color-text-primary)" }}>
             What is ExitDebt?
