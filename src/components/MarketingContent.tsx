@@ -89,17 +89,26 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             Getting started with debt relief is simple. Follow our 4-step process to financial freedom.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8">
           {[
             { step: "01", title: "Join waitlist", desc: "Sign up for early access." },
             { step: "02", title: "Assessment", desc: "Know your debt health." },
             { step: "03", title: "Restructure", desc: "Custom financial plan." },
             { step: "04", title: "Freedom", desc: "Exit your debt terms." },
           ].map((item) => (
-            <div key={item.step} className="relative">
-              <span className="text-4xl font-black opacity-10 absolute -top-4 -left-2" style={{ color: "var(--color-teal)" }}>{item.step}</span>
-              <h3 className="text-lg font-bold mb-2 pt-2" style={{ color: "var(--color-text-primary)" }}>{item.title}</h3>
-              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>{item.desc}</p>
+            <div key={item.step} className="relative text-center group">
+              <span 
+                className="text-5xl font-black opacity-[0.07] absolute -top-6 left-1/2 -translate-x-1/2 transition-all group-hover:opacity-10" 
+                style={{ color: "var(--color-teal)" }}
+              >
+                {item.step}
+              </span>
+              <h3 className="text-xl font-bold mb-3 pt-4 relative z-10" style={{ color: "var(--color-text-primary)" }}>
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed relative z-10" style={{ color: "var(--color-text-secondary)" }}>
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
