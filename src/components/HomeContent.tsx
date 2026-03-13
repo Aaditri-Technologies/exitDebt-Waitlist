@@ -34,8 +34,8 @@ export default function HomeContent({ onWaitlistClick }: { onWaitlistClick: () =
               className="text-sm sm:text-lg leading-relaxed max-w-lg mx-auto mb-6 sm:mb-8"
               style={{ color: "var(--color-text-secondary)" }}
             >
-              India&apos;s smartest debt management platform. Understand, restructure,
-              and become debt-free — faster. Sign up to be the first to know when we launch.
+              <strong>ExitDebt</strong> is India&apos;s smartest debt management platform. We provide tools to understand, restructure,
+              and become debt-free — faster. Sign up for early access to our debt relief solutions.
             </p>
           </div>
 

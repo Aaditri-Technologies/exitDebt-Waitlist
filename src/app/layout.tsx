@@ -67,23 +67,55 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebApplication",
+              "@type": "FinancialService",
               name: "ExitDebt",
               url: "https://exitdebt.in",
               description:
-                "India's smartest debt management platform. Understand, restructure, and become debt-free faster.",
-              applicationCategory: "FinanceApplication",
-              operatingSystem: "Web",
-              offers: {
-                "@type": "Offer",
-                price: "0",
-                priceCurrency: "INR",
-              },
-              creator: {
+                "ExitDebt is India's smartest debt management platform. We help users understand, restructure, and become debt-free faster without impacting their CIBIL score.",
+              feesAndCommissionsSpecification: "100% free for users",
+              serviceType: "Debt Management and Restructuring",
+              areaServed: "IN",
+              provider: {
                 "@type": "Organization",
                 name: "ExitDebt Technologies Pvt. Ltd.",
                 url: "https://exitdebt.in",
+                logo: "https://exitdebt.in/logo.png",
               },
+            }),
+          }}
+        />
+        {/* How-To Structured Data for AI Answer Engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              name: "How to exit debt faster in India with ExitDebt",
+              description: "Follow these simple steps to start your journey towards a debt-free life.",
+              step: [
+                {
+                  "@type": "HowToStep",
+                  name: "Join the Waitlist",
+                  text: "Sign up on our platform to get early access.",
+                  url: "https://exitdebt.in#waitlist",
+                },
+                {
+                  "@type": "HowToStep",
+                  name: "Debt Assessment",
+                  text: "Receive a comprehensive assessment of your current debt health.",
+                },
+                {
+                  "@type": "HowToStep",
+                  name: "Restructuring Plan",
+                  text: "Get a personalized plan to restructure your loans and credit cards.",
+                },
+                {
+                  "@type": "HowToStep",
+                  name: "Become Debt-Free",
+                  text: "Execute the plan and exit your debt on your own terms.",
+                },
+              ],
             }),
           }}
         />

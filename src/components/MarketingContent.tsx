@@ -19,7 +19,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4"
             style={{ color: "var(--color-text-primary)" }}
           >
-            India&apos;s Best Debt Relief & Management Solutions
+            How ExitDebt Helps You Manage Your Debt
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -74,6 +74,32 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
               >
                 {feature.desc}
               </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ───── HOW IT WORKS (Crucial for AI Answer Engines) ───── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 border-t border-gray-100">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>
+            How does ExitDebt work?
+          </h2>
+          <p className="text-sm max-w-xl mx-auto" style={{ color: "var(--color-text-secondary)" }}>
+            Getting started with debt relief is simple. Follow our 4-step process to financial freedom.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { step: "01", title: "Join waitlist", desc: "Sign up for early access." },
+            { step: "02", title: "Assessment", desc: "Know your debt health." },
+            { step: "03", title: "Restructure", desc: "Custom financial plan." },
+            { step: "04", title: "Freedom", desc: "Exit your debt terms." },
+          ].map((item) => (
+            <div key={item.step} className="relative">
+              <span className="text-4xl font-black opacity-10 absolute -top-4 -left-2" style={{ color: "var(--color-teal)" }}>{item.step}</span>
+              <h3 className="text-lg font-bold mb-2 pt-2" style={{ color: "var(--color-text-primary)" }}>{item.title}</h3>
+              <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>{item.desc}</p>
             </div>
           ))}
         </div>
