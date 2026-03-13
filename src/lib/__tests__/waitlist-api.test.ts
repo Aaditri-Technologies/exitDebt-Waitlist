@@ -37,7 +37,7 @@ describe('POST /api/waitlist', () => {
 
     const validBody = {
         name: 'Test User',
-        mobile: '9876543210',
+        mobile: '+919876543210',
         place: 'Mumbai',
         totalDebt: 500000,
         honeypot: '',
@@ -74,7 +74,7 @@ describe('POST /api/waitlist', () => {
     });
 
     it('returns 400 for invalid mobile number', async () => {
-        const res = await POST(makeRequest({ ...validBody, mobile: '1234567890' }));
+        const res = await POST(makeRequest({ ...validBody, mobile: '+19876543210' }));
         const json = await res.json();
 
         expect(res.status).toBe(400);

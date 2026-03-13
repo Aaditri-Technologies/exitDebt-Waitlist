@@ -75,8 +75,8 @@ export async function POST(request: NextRequest) {
 
         if (!mobile || typeof mobile !== "string") {
             errors.push("Mobile number is required.");
-        } else if (!/^[6-9]\d{9}$/.test(mobile.trim())) {
-            errors.push("Mobile must be a valid 10-digit Indian number (starting with 6-9).");
+        } else if (!/^\+91\d{10}$/.test(mobile.trim())) {
+            errors.push("Mobile must be a valid 10-digit Indian number (e.g., +919876543210).");
         }
 
         if (!place || typeof place !== "string" || place.trim().length === 0) {

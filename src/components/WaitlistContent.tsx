@@ -31,11 +31,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
     function handleMobileChange(value: string) {
         const digits = value.replace(/\D/g, "").slice(0, 10);
         setMobile(digits);
-        if (digits.length === 10 && !/^[6-9]\d{9}$/.test(digits)) {
-            setMobileError("Must start with 6-9.");
-        } else {
-            setMobileError("");
-        }
+        setMobileError("");
     }
 
     function handleDebtChange(value: string) {
@@ -60,8 +56,8 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
             setNameError("");
         }
 
-        if (!mobile || !/^[6-9]\d{9}$/.test(mobile)) {
-            setMobileError("Enter a valid 10-digit Indian mobile number.");
+        if (!mobile || mobile.length !== 10) {
+            setMobileError("Enter a valid 10-digit mobile number.");
             valid = false;
         } else {
             setMobileError("");
@@ -91,7 +87,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     name: name.trim(),
-                    mobile: mobile.trim(),
+                    mobile: ("+91" + mobile).trim(),
                     place: place.trim(),
                     totalDebt: debtNum,
                     honeypot,
@@ -267,7 +263,7 @@ export default function WaitlistContent({ onBack }: { onBack?: () => void }) {
                                             placeholder=" "
                                             maxLength={10}
                                         />
-                                        <label htmlFor="form-mobile">Mobile</label>
+                                        <label htmlFor="form-mobile">Mobile Number</label>
                                         {mobileError && (
                                             <p className="text-xs mt-1" style={{ color: "var(--color-danger)" }}>{mobileError}</p>
                                         )}

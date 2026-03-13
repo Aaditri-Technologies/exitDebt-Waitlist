@@ -11,20 +11,17 @@ import { sanitizeString, sanitizeDebt } from '../../lib/sanitize';
 import { getStateFromCity } from '../../lib/city-state';
 
 describe('Waitlist submission validation patterns', () => {
-    const MOBILE_REGEX = /^[6-9]\d{9}$/;
+    const MOBILE_REGEX = /^\+91\d{10}$/;
 
     describe('mobile number validation', () => {
-        it('accepts valid Indian mobile numbers starting with 6-9', () => {
-            expect(MOBILE_REGEX.test('9876543210')).toBe(true);
-            expect(MOBILE_REGEX.test('8765432109')).toBe(true);
-            expect(MOBILE_REGEX.test('7654321098')).toBe(true);
-            expect(MOBILE_REGEX.test('6543210987')).toBe(true);
+        it('accepts valid Indian mobile numbers with +91 prefix', () => {
+            expect(MOBILE_REGEX.test('+919876543210')).toBe(true);
+            expect(MOBILE_REGEX.test('+918765432109')).toBe(true);
         });
 
-        it('rejects numbers starting with 0-5', () => {
-            expect(MOBILE_REGEX.test('0987654321')).toBe(false);
-            expect(MOBILE_REGEX.test('1234567890')).toBe(false);
-            expect(MOBILE_REGEX.test('5555555555')).toBe(false);
+        it('rejects numbers without +91 prefix', () => {
+            expect(MOBILE_REGEX.test('9876543210')).toBe(false);
+            expect(MOBILE_REGEX.test('+19876543210')).toBe(false);
         });
 
         it('rejects numbers with wrong length', () => {
@@ -32,9 +29,9 @@ describe('Waitlist submission validation patterns', () => {
             expect(MOBILE_REGEX.test('98765432101')).toBe(false);
         });
 
-        it('rejects non-numeric strings', () => {
-            expect(MOBILE_REGEX.test('abcdefghij')).toBe(false);
-            expect(MOBILE_REGEX.test('987654321a')).toBe(false);
+        it('rejects non-numeric characters after prefix', () => {
+            expect(MOBILE_REGEX.test('+91abcdefgh')).toBe(false);
+            expect(MOBILE_REGEX.test('+91987654321a')).toBe(false);
         });
     });
 
@@ -147,7 +144,7 @@ describe('IP extraction patterns', () => {
     });
 
     it('falls back to "unknown" when no headers present', () => {
-        const xForwardedFor: string | null = null;
+        const xForwardedFor = null as string | null;
         const xRealIp: string | null = null;
         const ip = xForwardedFor?.split(',')[0]?.trim() || xRealIp || 'unknown';
         expect(ip).toBe('unknown');
