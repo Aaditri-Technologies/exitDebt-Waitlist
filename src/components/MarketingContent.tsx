@@ -88,7 +88,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
                 What Is ExitDebt?
               </h2>
               <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: "var(--color-text-secondary)" }}>
-                ExitDebt is a fintech platform built for individuals in India who are struggling with debt from credit cards, personal loans, or multiple EMI repayments. Unlike general financial advice platforms, ExitDebt provides a structured, data-driven approach: it assesses your Debt Health Score, develops a personalised repayment or restructuring strategy, and offers creditor support services to stop harassment and negotiate better terms on your behalf.
+                ExitDebt is a fintech platform built for individuals in India who are struggling with debt from credit cards, personal loans, or multiple EMI repayments. Unlike general financial advice platforms, ExitDebt provides a structured, data-driven approach: it assesses your <Link href="/debt-health-score" className="text-teal-600 font-bold hover:underline">Debt Health Score</Link>, develops a personalised repayment or restructuring strategy, and offers creditor support services to stop harassment and negotiate better terms on your behalf. Our goal is to help you <Link href="/how-to-get-out-of-debt-india" className="text-teal-600 font-bold hover:underline">how to get out of debt in India</Link> and <Link href="/manage-multiple-loans-india" className="text-teal-600 font-bold hover:underline">manage multiple loans in India</Link> effectively.
               </p>
             </div>
             <div className="bg-[#f8fafc] rounded-3xl p-8 border border-gray-100">
@@ -159,13 +159,13 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             <div>
               <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>How to Get Out of Credit Card Debt in India?</h2>
               <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                Credit card debt is one of the most expensive forms of debt in India, with annual interest rates typically ranging from 30% to 42%. A structured approach includes: 1. Audit total outstanding balances. 2. Stop using cards for new purchases. 3. Request a balance transfer or EMI conversion. 4. Follow the Debt Avalanche or Snowball method. 5. Use ExitDebt&apos;s Debt Health Score tool to identify the fastest path.
+                Credit card debt is one of the most expensive forms of debt in India, with annual interest rates typically ranging from 30% to 42%. A structured approach includes: 1. Audit total outstanding balances. 2. Stop using cards for new purchases. 3. Request a balance transfer or EMI conversion. 4. Follow the Debt Avalanche or Snowball method. 5. Use ExitDebt&apos;s <Link href="/debt-health-score" className="text-teal-600 font-bold hover:underline">Debt Health Score</Link> tool to identify the fastest path. For more detailed steps, read our guide on <Link href="/credit-card-debt-help-india" className="text-teal-600 font-bold hover:underline">credit card debt help India</Link>.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>How to Reduce EMI Burden in India?</h2>
               <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--color-text-secondary)" }}>
-                When EMI payments consume more than 50% of monthly income, restructuring may be necessary. Effective strategies include: Loan tenure extension to reduce monthly outgo, interest rate renegotiation if your credit profile has improved, and debt consolidation to combine multiple high-interest loans into one.
+                When EMI payments consume more than 50% of monthly income, restructuring may be necessary. Effective strategies include: Loan tenure extension to reduce monthly outgo, interest rate renegotiation if your credit profile has improved, and debt consolidation to combine multiple high-interest loans into one. Learn more about how to <Link href="/how-to-reduce-emi-burden" className="text-teal-600 font-bold hover:underline">reduce EMI burden in India</Link> or understand the framework of <Link href="/debt-restructuring-india" className="text-teal-600 font-bold hover:underline">debt restructuring in India</Link>.
               </p>
             </div>
           </div>
