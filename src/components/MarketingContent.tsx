@@ -95,7 +95,7 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
             { step: "02", title: "Assessment", desc: "Know your debt health." },
             { step: "03", title: "Restructure", desc: "Custom financial plan." },
             { step: "04", title: "Freedom", desc: "Exit your debt terms." },
-          ].map((item, index, array) => (
+          ].map((item) => (
             <div key={item.step} className="relative text-center group">
               <span 
                 className="text-5xl font-black opacity-[0.07] absolute -top-6 left-1/2 -translate-x-1/2 transition-all group-hover:opacity-10" 
@@ -109,15 +109,6 @@ export default function MarketingContent({ onWaitlistClick }: { onWaitlistClick:
               <p className="text-sm leading-relaxed relative z-10" style={{ color: "var(--color-text-secondary)" }}>
                 {item.desc}
               </p>
-              
-              {/* Arrow Indicator for Desktop */}
-              {index < array.length - 1 && (
-                <div className="hidden lg:flex absolute top-1/2 -right-[15%] -translate-y-1/2 z-20 items-center justify-center text-gray-200">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              )}
             </div>
           ))}
         </div>
