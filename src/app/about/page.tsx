@@ -51,7 +51,7 @@ export default function AboutPage() {
               financial stress legally, protect their credit scores, and regain financial freedom.
             </p>
           </div>
-          <div>
+          <div id="articles-section">
             <h3 className="text-2xl font-bold mb-6" style={{ color: "var(--color-text-primary)" }}>Topical Authority</h3>
             <p className="mb-4" style={{ color: "var(--color-text-secondary)" }}>
               Explore our core pillars of debt management in India:

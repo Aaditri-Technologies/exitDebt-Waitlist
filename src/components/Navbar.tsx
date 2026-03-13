@@ -24,6 +24,16 @@ export default function Navbar() {
                         priority
                     />
                 </Link>
+                
+                <div className="flex items-center gap-6">
+                    <Link 
+                        href="/about#articles-section" 
+                        className="text-sm font-bold transition-colors hover:text-teal-600"
+                        style={{ color: "var(--color-text-primary)" }}
+                    >
+                        Articles
+                    </Link>
+                </div>
 
                 {/* Right section removed */}
             </div>
