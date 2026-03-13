@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     "debt free faster",
     "credit card debt relief",
     "personal loan settlement",
+    "EMI management",
+    "debt health analysis",
+    "debt payback strategy",
   ],
   metadataBase: new URL("https://exitdebt.in"),
   alternates: {
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ExitDebt – India's Smartest Debt Management Platform",
     description:
-      "Join the waitlist. Understand, restructure, and exit your debt — on your terms. No CIBIL impact. 100% free.",
+      "Join the waitlist. Understand, restructure, and exit your debt — at your terms. No CIBIL impact. 100% free.",
     type: "website",
     locale: "en_IN",
     siteName: "ExitDebt",
@@ -100,9 +103,9 @@ export default function RootLayout({
               name: "ExitDebt – Debt Management Platform",
               url: "https://exitdebt.in",
               description:
-                "ExitDebt is India's smartest debt management platform. We help users understand, restructure, and become debt-free faster without impacting their CIBIL score. Specializing in credit card and personal loan restructuring.",
+                "ExitDebt is India's smartest debt management platform. We help users perform a comprehensive Debt Health Analysis, build a Personalized Strategy, and become debt-free faster through EMI restructuring and professional debt relief.",
               feesAndCommissionsSpecification: "100% free for users",
-              serviceType: ["Debt Management", "Debt Restructuring", "Credit Counseling"],
+              serviceType: ["Debt Management", "Debt Restructuring", "Credit Counseling", "Debt Health Analysis", "EMI Management"],
               areaServed: "IN",
               provider: {
                 "@type": "Organization",
@@ -119,29 +122,29 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "HowTo",
-              name: "How to exit debt faster in India with ExitDebt",
-              description: "Follow these simple steps to start your journey towards a debt-free life with ExitDebt's management platform.",
+              name: "A Simple 4-Step Plan to Exit Your Debt with ExitDebt",
+              description: "ExitDebt analyzes your liabilities, builds a personalized strategy, and helps you restructure repayments so you can become debt-free faster.",
               step: [
                 {
                   "@type": "HowToStep",
-                  name: "Join the Waitlist",
-                  text: "Sign up on ExitDebt's platform to get early access for debt assessment.",
+                  name: "Join ExitDebt",
+                  text: "Sign up on ExitDebt's platform to secure early access for debt assessment.",
                   url: "https://exitdebt.in#waitlist",
                 },
                 {
                   "@type": "HowToStep",
-                  name: "Debt Assessment",
-                  text: "Receive a comprehensive assessment of your current debt health and CIBIL score status.",
+                  name: "Debt Health Analysis",
+                  text: "Understand your real debt health across loans, cards, and EMIs.",
                 },
                 {
                   "@type": "HowToStep",
-                  name: "Restructuring Plan",
-                  text: "Get a personalized financial plan to restructure your high-interest loans and credit cards effectively.",
+                  name: "Personalized Strategy",
+                  text: "Receive a customized restructuring and repayment plan tailored to your financial situation.",
                 },
                 {
                   "@type": "HowToStep",
-                  name: "Become Debt-Free",
-                  text: "Execute the debt relief plan and exit your debt on your own terms without harassment.",
+                  name: "Financial Freedom",
+                  text: "Execute the plan and move toward a debt-free life at your terms.",
                 },
               ],
             }),
@@ -160,7 +163,7 @@ export default function RootLayout({
                   name: "What is ExitDebt?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score. Exit your debt on your own terms using our proprietary debt health score.",
+                    text: "ExitDebt is India's smartest debt management platform that helps you understand, restructure, and become debt-free faster — without impacting your CIBIL score. Exit your debt at your terms using our proprietary debt health score.",
                   },
                 },
                 {
@@ -177,6 +180,14 @@ export default function RootLayout({
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Yes, ExitDebt is 100% free for users. Join the waitlist for early access to our debt management tools when we launch.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What is the ExitDebt Health Analysis?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The ExitDebt Health Analysis is a deep dive into your real debt health across loans, credit cards, and EMIs. It provides the foundation for your personalized debt repayment strategy.",
                   },
                 },
                 {
