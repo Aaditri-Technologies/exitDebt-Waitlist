@@ -83,7 +83,7 @@ export default function Footer() {
                     style={{ borderTop: "1px solid var(--color-border)" }}
                 >
                     <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
-                        © {new Date().getFullYear()} Aaditri Technologies. All
+                        © {new Date().getFullYear()} Aaditri GlobalTech Private Limited. All
                         rights reserved.
                     </p>
                 </div>

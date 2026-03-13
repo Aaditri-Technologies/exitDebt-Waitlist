@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
     title: "Privacy Policy",
     description:
-        "ExitDebt Privacy Policy — how Aaditri Technologies collects, uses, stores, and shares your personal information.",
+        "ExitDebt Privacy Policy — how Aaditri GlobalTech Private Limited collects, uses, stores, and shares your personal information.",
 };
 
 const LAST_UPDATED = "March 2026";
@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
                 >
                     {/* Intro */}
                     <p>
-                        This Privacy Policy describes how Aaditri Technologies
+                        This Privacy Policy describes how Aaditri GlobalTech Private Limited
                         (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or
                         &quot;our&quot;) collects, uses, stores, and shares
                         information in connection with your use of our website,

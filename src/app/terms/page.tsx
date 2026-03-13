@@ -50,7 +50,7 @@ export default function TermsPage() {
                         These Terms and Conditions (&quot;Terms&quot;) govern
                         your access to and use of the website, applications, and
                         related services (collectively, the &quot;Services&quot;)
-                        provided by Aaditri Technologies (&quot;Company,&quot;
+                        provided by Aaditri GlobalTech Private Limited (&quot;Company,&quot;
                         &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;),
                         including the ExitDebt platform.
                     </p>

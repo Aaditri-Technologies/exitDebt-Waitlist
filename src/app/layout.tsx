@@ -80,7 +80,7 @@ export default function RootLayout({
               "url": "https://exitdebt.in",
               "logo": "https://exitdebt.in/logo.png",
               "description": "ExitDebt is India's structured debt management and restructuring platform for individuals with credit card debt, personal loans, and EMI obligations.",
-              "foundingOrganization": "Aaditri Technologies",
+              "foundingOrganization": "Aaditri GlobalTech Private Limited",
               "areaServed": "IN",
               "serviceType": ["Debt Restructuring", "Debt Management", "Financial Planning", "Credit Counselling"],
               "contactPoint": {

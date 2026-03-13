@@ -38,7 +38,7 @@ export default function AboutPage() {
           <p className="text-lg sm:text-2xl leading-relaxed mt-6" style={{ color: "var(--color-text-secondary)" }}>
             The platform generates a <strong>Debt Health Score</strong> for each user, builds a customised 
             repayment or restructuring strategy, and provides creditor support services to reduce 
-            interest burden and stop collection harassment. ExitDebt is operated by <strong>Aaditri Technologies</strong> and 
+            interest burden and stop collection harassment. ExitDebt is operated by <strong>Aaditri GlobalTech Private Limited</strong> and 
             is designed specifically for Indian borrowers seeking a legally compliant, structured path 
             to becoming debt-free.
           </p>
