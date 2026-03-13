@@ -21,8 +21,7 @@ export function sanitizeString(input: string): string {
  * Validate and clamp a numeric value within a safe range.
  */
 export function sanitizeDebt(value: number): number {
-    // Cap at ₹100 crore (reasonable max debt for an individual)
-    const MAX_DEBT = 1_000_000_000;
+    // Only clamp the minimum value to 1 to ensure a positive number
     const MIN_DEBT = 1;
-    return Math.min(Math.max(value, MIN_DEBT), MAX_DEBT);
+    return Math.max(value, MIN_DEBT);
 }

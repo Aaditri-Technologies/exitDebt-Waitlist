@@ -124,7 +124,7 @@ export default function DebtRestructuringIndia() {
                   <div>
                     <div className="text-teal-400 font-bold mb-2">Step 03</div>
                     <h4 className="text-xl font-bold mb-4">Submit Formal Request</h4>
-                    <p className="text-gray-400 text-sm">Write to the bank's hardship desk. ExitDebt handles this documentation and negotiation for you.</p>
+                    <p className="text-gray-400 text-sm">Write to the bank&apos;s hardship desk. ExitDebt handles this documentation and negotiation for you.</p>
                   </div>
                   <div>
                     <div className="text-teal-400 font-bold mb-2">Step 04</div>
@@ -156,7 +156,7 @@ export default function DebtRestructuringIndia() {
             <div className="flex flex-wrap gap-8 items-center justify-between bg-teal-50 p-10 rounded-[2.5rem]">
                <div>
                   <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--color-text-primary)" }}>Become Debt-Free Legally.</h3>
-                  <p className="m-0 text-gray-500">Don't wait for the collection calls to start. Take action now.</p>
+                  <p className="m-0 text-gray-500">Don&apos;t wait for the collection calls to start. Take action now.</p>
                </div>
                <Link href="/" className="px-10 py-4 bg-teal-600 text-white font-bold rounded-2xl shadow-xl shadow-teal-600/20 hover:bg-teal-500 transition-all">
                  Join the Waitlist

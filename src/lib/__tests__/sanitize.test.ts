@@ -50,12 +50,8 @@ describe('sanitizeDebt', () => {
         expect(sanitizeDebt(-100)).toBe(1);
     });
 
-    it('allows maximum of 1 billion (100 crore)', () => {
-        expect(sanitizeDebt(1_000_000_000)).toBe(1_000_000_000);
-    });
-
-    it('clamps values exceeding 100 crore', () => {
-        expect(sanitizeDebt(2_000_000_000)).toBe(1_000_000_000);
+    it('allows values exceeding 100 crore', () => {
+        expect(sanitizeDebt(2_000_000_000)).toBe(2_000_000_000);
     });
 
     it('handles decimal debt values', () => {

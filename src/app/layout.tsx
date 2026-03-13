@@ -111,7 +111,7 @@ export default function RootLayout({
               areaServed: "IN",
               provider: {
                 "@type": "Organization",
-                name: "ExitDebt Technologies Pvt. Ltd.",
+                name: "Aaditri GlobalTech Private Limited",
                 url: "https://exitdebt.in",
               },
             }),

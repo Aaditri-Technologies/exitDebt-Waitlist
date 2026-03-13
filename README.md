@@ -141,7 +141,7 @@ CREATE TABLE waitlist (
   mobile      VARCHAR(15) NOT NULL,
   place       VARCHAR(100) NOT NULL,
   state       VARCHAR(50) DEFAULT 'Other',
-  total_debt  NUMERIC(12,2) NOT NULL,
+  total_debt  NUMERIC(20,2) NOT NULL,
   archived    BOOLEAN DEFAULT false,
   created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -233,4 +233,4 @@ Then run `migrate.sql` against your production database.
 
 ## License
 
-Proprietary — Aaditri Technologies Pvt. Ltd.
+Proprietary — Aaditri GlobalTech Private Limited

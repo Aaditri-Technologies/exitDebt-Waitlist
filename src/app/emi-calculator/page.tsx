@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -11,10 +11,6 @@ export default function EMICalculator() {
   const [tenure, setTenure] = useState<number>(3);
   const [newTenure, setNewTenure] = useState<number>(5);
   
-  const [currentEMI, setCurrentEMI] = useState<number>(0);
-  const [restructuredEMI, setRestructuredEMI] = useState<number>(0);
-  const [monthlySavings, setMonthlySavings] = useState<number>(0);
-
   const calculateEMI = (p: number, r: number, t: number) => {
     const monthlyRate = r / (12 * 100);
     const months = t * 12;
@@ -22,13 +18,13 @@ export default function EMICalculator() {
     return (p * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
   };
 
-  useEffect(() => {
-    const cEMI = calculateEMI(loanAmount, interestRate, tenure);
-    const rEMI = calculateEMI(loanAmount, interestRate, newTenure);
-    setCurrentEMI(Math.round(cEMI));
-    setRestructuredEMI(Math.round(rEMI));
-    setMonthlySavings(Math.round(cEMI - rEMI));
-  }, [loanAmount, interestRate, tenure, newTenure]);
+  const cEMI = calculateEMI(loanAmount, interestRate, tenure);
+  const rEMI = calculateEMI(loanAmount, interestRate, newTenure);
+
+  const currentEMI = Math.round(cEMI);
+  const restructuredEMI = Math.round(rEMI);
+  const monthlySavings = Math.round(cEMI - rEMI);
+
 
   return (
     <div className="flex flex-col min-h-screen" style={{ backgroundColor: "var(--color-bg)" }}>

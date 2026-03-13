@@ -74,7 +74,7 @@ export default function ManageMultipleLoansIndia() {
             <p style={{ color: "var(--color-text-secondary)" }}>
               The availability of instant credit through apps and digital NBFCs has made it easier than ever for 
               Indian borrowers to accumulate 3–5 active loan products. The complexity of different due dates, 
-              interest rates, and penalty structures often leads to "decision fatigue."
+              interest rates, and penalty structures often leads to &quot;decision fatigue.&quot;
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
               <div className="p-6 bg-white border border-gray-100 rounded-3xl shadow-sm">

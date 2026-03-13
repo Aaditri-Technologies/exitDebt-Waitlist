@@ -88,7 +88,7 @@ export default function CreditCardDebtHelpIndia() {
             </h2>
             <p style={{ color: "var(--color-text-secondary)" }}>
               India&apos;s credit card base has grown to over 100 million active cards. The revolving credit structure 
-              and high interest rates (36–42% per annum) create a "treadmill effect" where borrowers are servicing 
+              and high interest rates (36–42% per annum) create a &quot;treadmill effect&quot; where borrowers are servicing 
               their debt but not clearing it.
             </p>
             <ul className="space-y-4" style={{ color: "var(--color-text-secondary)" }}>

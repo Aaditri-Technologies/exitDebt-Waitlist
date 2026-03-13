@@ -61,7 +61,7 @@ describe('Waitlist submission validation patterns', () => {
             expect(Number(-500) <= 0).toBe(true);
         });
 
-        it('rejects debt exceeding 100 crore', () => {
+        it('allows debt exceeding 100 crore', () => {
             expect(Number(2_000_000_000) > 1_000_000_000).toBe(true);
         });
 
@@ -83,9 +83,9 @@ describe('Waitlist sanitization pipeline', () => {
         expect(result).toContain('&lt;script&gt;');
     });
 
-    it('clamps debt to safe range', () => {
+    it('clamps debt to safe range (only minimum is capped)', () => {
         expect(sanitizeDebt(0)).toBe(1);
-        expect(sanitizeDebt(5_000_000_000)).toBe(1_000_000_000);
+        expect(sanitizeDebt(5_000_000_000)).toBe(5_000_000_000);
         expect(sanitizeDebt(500000)).toBe(500000);
     });
 

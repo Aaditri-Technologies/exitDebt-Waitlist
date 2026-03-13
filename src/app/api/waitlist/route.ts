@@ -22,7 +22,8 @@ export async function POST(request: NextRequest) {
 
     const { allowed, remaining } = await rateLimit(ip, 15, 15 * 60 * 1000);
 
-    if (!allowed) {
+    // Bypass rate limits in development to allow unhindered testing
+    if (!allowed && process.env.NODE_ENV !== "development") {
         return NextResponse.json(
             { success: false, error: "Too many submissions. Please try again later." },
             {
@@ -90,8 +91,6 @@ export async function POST(request: NextRequest) {
             errors.push("Total debt is required.");
         } else if (isNaN(debtNum) || debtNum <= 0) {
             errors.push("Total debt must be a positive number.");
-        } else if (debtNum > 1_000_000_000) {
-            errors.push("Total debt exceeds maximum allowed value.");
         }
 
         if (errors.length > 0) {
@@ -117,7 +116,7 @@ export async function POST(request: NextRequest) {
             [safeMobile]
         );
 
-        if (dupCheck.rows.length > 0) {
+        if (dupCheck.rows.length > 0 && process.env.NODE_ENV !== "development") {
             return NextResponse.json(
                 { success: false, error: "This mobile number was already registered recently." },
                 { status: 409 }
