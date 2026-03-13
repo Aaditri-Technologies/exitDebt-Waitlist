@@ -31,7 +31,7 @@ export default function Navbar() {
                         className="text-sm font-bold transition-colors hover:text-teal-600"
                         style={{ color: "var(--color-text-primary)" }}
                     >
-                        Articles
+                        About Us
                     </Link>
                 </div>
 
