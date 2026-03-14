@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     title: "Terms & Conditions",
     description:
         "ExitDebt Terms & Conditions — the rules and guidelines for using our platform and services.",
+    alternates: {
+        canonical: "/terms",
+    },
 };
 
 const LAST_UPDATED = "March 2026";

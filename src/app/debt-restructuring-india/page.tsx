@@ -9,6 +9,10 @@ export const metadata = {
   alternates: {
     canonical: "/debt-restructuring-india",
   },
+  openGraph: {
+    title: "Debt Restructuring in India — Legal & Structured Relief",
+    description: "Learn how RBI-compliant debt restructuring works, who qualifies, and how to apply.",
+  },
 };
 
 export default function DebtRestructuringIndia() {
@@ -35,6 +39,35 @@ export default function DebtRestructuringIndia() {
             "dateModified": "2026-03-13",
             "mainEntityOfPage": "https://exitdebt.in/debt-restructuring-india",
             "inLanguage": "en-IN"
+          }),
+        }}
+      />
+      {/* BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://exitdebt.in" },
+              { "@type": "ListItem", "position": 2, "name": "Debt Restructuring India", "item": "https://exitdebt.in/debt-restructuring-india" },
+            ],
+          }),
+        }}
+      />
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Is debt restructuring legal in India?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is supported by RBI guidelines exactly for borrowers facing financial distress." } },
+              { "@type": "Question", "name": "Does debt restructuring affect my CIBIL?", "acceptedAnswer": { "@type": "Answer", "text": "It may be marked on your report, but it is far less damaging than defaults or write-offs." } },
+              { "@type": "Question", "name": "How long does the debt restructuring process take?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 30-60 days. Complex multi-lender cases might take up to 90 days." } },
+            ],
           }),
         }}
       />

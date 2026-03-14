@@ -9,6 +9,10 @@ export const metadata = {
   alternates: {
     canonical: "/how-to-reduce-emi-burden",
   },
+  openGraph: {
+    title: "How to Reduce EMI Burden in India — 7 Proven Strategies",
+    description: "Discover legal, effective strategies to reduce your EMI burden and manage loan repayments in India.",
+  },
 };
 
 export default function HowToReduceEMIBurden() {
@@ -52,6 +56,35 @@ export default function HowToReduceEMIBurden() {
               { "@type": "HowToStep", "position": 3, "name": "Debt Consolidation", "text": "Combine multiple high-interest EMIs into a single lower-interest loan." },
               { "@type": "HowToStep", "position": 4, "name": "Partial Prepayment", "text": "Make a lump-sum payment to reduce the outstanding principal." }
             ]
+          }),
+        }}
+      />
+      {/* BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://exitdebt.in" },
+              { "@type": "ListItem", "position": 2, "name": "How to Reduce EMI Burden", "item": "https://exitdebt.in/how-to-reduce-emi-burden" },
+            ],
+          }),
+        }}
+      />
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Is a good EMI-to-income ratio important?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it determines your future borrowing capacity and lifestyle stability." } },
+              { "@type": "Question", "name": "Can I ask my bank to reduce EMIs?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Under RBI guidelines, banks must consider genuine hardship requests." } },
+              { "@type": "Question", "name": "Does consolidation reduce total EMI?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, by replacing high-rate unsecured debt with a lower-rate consolidated product." } },
+            ],
           }),
         }}
       />

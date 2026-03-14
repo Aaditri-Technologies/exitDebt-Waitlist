@@ -6,6 +6,13 @@ import Link from "next/link";
 export const metadata = {
   title: "About ExitDebt | India's Smartest Debt Management Platform",
   description: "ExitDebt is India's structured debt management platform helping individuals resolve credit card debt, EMIs, and personal loans legally and effectively.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About ExitDebt",
+    description: "ExitDebt is India's structured debt management platform helping individuals resolve credit card debt, EMIs, and personal loans.",
+  },
 };
 
 export default function AboutPage() {

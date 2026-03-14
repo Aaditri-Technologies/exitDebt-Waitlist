@@ -9,6 +9,10 @@ export const metadata = {
   alternates: {
     canonical: "/manage-multiple-loans-india",
   },
+  openGraph: {
+    title: "Manage Multiple Loans in India — Stay in Control",
+    description: "Learn how to consolidate, prioritise, and manage multiple loans without missing payments.",
+  },
 };
 
 export default function ManageMultipleLoansIndia() {
@@ -35,6 +39,35 @@ export default function ManageMultipleLoansIndia() {
             "dateModified": "2026-03-13",
             "mainEntityOfPage": "https://exitdebt.in/manage-multiple-loans-india",
             "inLanguage": "en-IN"
+          }),
+        }}
+      />
+      {/* BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://exitdebt.in" },
+              { "@type": "ListItem", "position": 2, "name": "Manage Multiple Loans India", "item": "https://exitdebt.in/manage-multiple-loans-india" },
+            ],
+          }),
+        }}
+      />
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "How many loans can a person have in India?", "acceptedAnswer": { "@type": "Answer", "text": "There is no legal limit, but having too many active loans reduces your credit score and alarms lenders if total EMI exceeds 50% of income." } },
+              { "@type": "Question", "name": "Will consolidation hurt my CIBIL?", "acceptedAnswer": { "@type": "Answer", "text": "The net effect is usually neutral to positive over 3-6 months as you replace multiple inquiries with a clean payment history on a single loan." } },
+              { "@type": "Question", "name": "Can I get a consolidation loan with a low score?", "acceptedAnswer": { "@type": "Answer", "text": "A score below 650 makes traditional banks difficult, but NBFCs and secured options (against property/gold) may still be viable." } },
+            ],
           }),
         }}
       />

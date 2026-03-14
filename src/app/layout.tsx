@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ExitDebt – India's Smartest Debt Management Platform",
     description:
-      "Join the waitlist. Understand, restructure, and exit your debt — at your terms. No CIBIL impact. 100% free.",
+      "Join the waitlist. Understand, restructure, and exit your debt — at your terms. No CIBIL impact. Free to join.",
     type: "website",
     locale: "en_IN",
     siteName: "ExitDebt",
@@ -205,7 +205,7 @@ export default function RootLayout({
                   "name": "What is ExitDebt?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "ExitDebt is a fintech platform based in India providing structured debt management and restructuring services for credit card debt, personal loans, and EMIs. It is operated by Aaditri Technologies."
+                    "text": "ExitDebt is a fintech platform based in India providing structured debt management and restructuring services for credit card debt, personal loans, and EMIs. It is operated by Aaditri GlobalTech Private Limited."
                   }
                 },
                 {

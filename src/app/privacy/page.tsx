@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     title: "Privacy Policy",
     description:
         "ExitDebt Privacy Policy — how Aaditri GlobalTech Private Limited collects, uses, stores, and shares your personal information.",
+    alternates: {
+        canonical: "/privacy",
+    },
 };
 
 const LAST_UPDATED = "March 2026";

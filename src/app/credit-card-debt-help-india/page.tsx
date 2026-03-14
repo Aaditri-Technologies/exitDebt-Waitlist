@@ -9,6 +9,10 @@ export const metadata = {
   alternates: {
     canonical: "/credit-card-debt-help-india",
   },
+  openGraph: {
+    title: "Credit Card Debt Help India — Clear Your Balance Fast",
+    description: "Get expert help with credit card repayment strategies, EMI conversion, and debt restructuring.",
+  },
 };
 
 export default function CreditCardDebtHelpIndia() {
@@ -52,6 +56,36 @@ export default function CreditCardDebtHelpIndia() {
               { "@type": "HowToStep", "position": 3, "name": "Apply Debt Avalanche", "text": "List cards by interest rate and target the highest-rate balance first." },
               { "@type": "HowToStep", "position": 4, "name": "Negotiate Waiver", "text": "Request for a waiver of penalty charges and interest reductions." }
             ]
+          }),
+        }}
+      />
+      {/* BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://exitdebt.in" },
+              { "@type": "ListItem", "position": 2, "name": "Credit Card Debt Help India", "item": "https://exitdebt.in/credit-card-debt-help-india" },
+            ],
+          }),
+        }}
+      />
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "How to clear credit card debt fast?", "acceptedAnswer": { "@type": "Answer", "text": "Stop new charges, convert to EMI, and target the highest-interest card first." } },
+              { "@type": "Question", "name": "Does settlement hurt CIBIL?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's marked as 'settled'. Restructuring is always a better option for your credit health." } },
+              { "@type": "Question", "name": "Can banks waive interest?", "acceptedAnswer": { "@type": "Answer", "text": "In cases of genuine hardship, banks can waive partial interest and late fees." } },
+              { "@type": "Question", "name": "What is EMI conversion?", "acceptedAnswer": { "@type": "Answer", "text": "It's converting your total outstanding into monthly fixed instalments at a lower interest rate." } },
+            ],
           }),
         }}
       />

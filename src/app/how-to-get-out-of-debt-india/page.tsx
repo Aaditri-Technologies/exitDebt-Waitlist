@@ -9,6 +9,10 @@ export const metadata = {
   alternates: {
     canonical: "/how-to-get-out-of-debt-india",
   },
+  openGraph: {
+    title: "How to Get Out of Debt in India — Step-by-Step Guide",
+    description: "Learn proven strategies to get out of debt fast with structured repayment planning.",
+  },
 };
 
 export default function HowToGetOutOfDebtIndia() {
@@ -54,6 +58,35 @@ export default function HowToGetOutOfDebtIndia() {
               { "@type": "HowToStep", "position": 5, "name": "Consolidate and Simplify", "text": "Explore debt consolidation once high-interest debts are managed." },
               { "@type": "HowToStep", "position": 6, "name": "Protect Your Recovery", "text": "Rebuild CIBIL score through consistent payments and spending discipline." }
             ]
+          }),
+        }}
+      />
+      {/* BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://exitdebt.in" },
+              { "@type": "ListItem", "position": 2, "name": "How to Get Out of Debt in India", "item": "https://exitdebt.in/how-to-get-out-of-debt-india" },
+            ],
+          }),
+        }}
+      />
+      {/* FAQPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "How long does it take to get out of debt in India?", "acceptedAnswer": { "@type": "Answer", "text": "The timeline depends on your total outstanding debt and monthly repayment capacity. Most structured plans using the Avalanche method show significant progress within 12–24 months." } },
+              { "@type": "Question", "name": "Is debt restructuring the same as defaulting?", "acceptedAnswer": { "@type": "Answer", "text": "No. Debt restructuring is a formal, legal agreement with your lender to modify repayment terms. It is initiated proactively and is supported by RBI guidelines." } },
+              { "@type": "Question", "name": "Can I get out of debt on a low income?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but it requires stricter budgeting and potentially requesting restructuring to lower monthly EMIs. ExitDebt's strategy is designed to make debt exit viable even on modest incomes." } },
+            ],
           }),
         }}
       />
