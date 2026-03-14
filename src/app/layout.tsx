@@ -34,6 +34,13 @@ export const metadata: Metadata = {
     "loan repayment strategy",
     "interest burden",
     "creditor negotiation",
+    "ExitDebt subscription",
+    "debt freedom GPS",
+    "salary day cash flow",
+    "EMI reduction",
+    "zero cibil impact debt settlement",
+    "avoid credit card harassment",
+    "interest leak report",
   ],
   metadataBase: new URL("https://exitdebt.in"),
   alternates: {
@@ -106,7 +113,7 @@ export default function RootLayout({
               url: "https://exitdebt.in",
               description:
                 "ExitDebt is India's smartest debt management platform. We help users perform a comprehensive Debt Health Analysis, build a Personalized Strategy, and become debt-free faster through EMI restructuring and professional debt relief.",
-              feesAndCommissionsSpecification: "100% free for users",
+              feesAndCommissionsSpecification: "100% free for 3 months. Lite plan at ₹499/month, Shield plan at ₹1,999/month.",
               serviceType: ["Debt Management", "Debt Restructuring", "Credit Counseling", "Debt Health Analysis", "EMI Management"],
               areaServed: "IN",
               provider: {
@@ -114,6 +121,13 @@ export default function RootLayout({
                 name: "Aaditri GlobalTech Private Limited",
                 url: "https://exitdebt.in",
               },
+              offers: {
+                "@type": "AggregateOffer",
+                priceCurrency: "INR",
+                lowPrice: "499",
+                highPrice: "1999",
+                offerCount: "2"
+              }
             }),
           }}
         />
@@ -223,9 +237,35 @@ export default function RootLayout({
                     "@type": "Answer",
                     "text": "Timeline varies by debt amount and income, but ExitDebt's strategy is designed to accelerate the process. Many users reduce their debt-free timeline by 30-50% compared to uncoordinated minimum payments."
                   }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is ExitDebt free?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ExitDebt provides 3 months of free access to all intelligence tools (like Debt Freedom GPS and Interest Leak Report). After the trial, the Lite plan is ₹499/month, and the Shield plan (which includes creditor communication) is ₹1,999/month."
+                  }
                 }
               ]
             }),
+          }}
+        />
+        {/* Software Application Schema for AEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "ExitDebt Dashboard",
+              "operatingSystem": "Web",
+              "applicationCategory": "FinanceApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "499.00",
+                "priceCurrency": "INR"
+              }
+            })
           }}
         />
       </head>
