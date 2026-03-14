@@ -11,11 +11,21 @@ A waitlist landing page for **ExitDebt** — India's smartest debt management pl
 
 ## Pages
 
-| Route | Description |
-|---|---|
-| `/` | Homepage with CTA |
-| `/waitlist` | Waitlist form (Name, Mobile, Place, Total Debt) |
-| `/admin/waitlist` | Admin dashboard — manage submissions |
+| Route | Type | Description |
+|---|---|---|
+| `/` | Landing | Homepage with CTA and view transitions |
+| `/waitlist` | Form | Waitlist form (Name, Mobile, Place, Total Debt) |
+| `/emi-calculator` | Tool | EMI savings calculator based on RBI restructuring |
+| `/debt-health-score` | Tool | Debt-to-income ratio diagnostic |
+| `/how-to-get-out-of-debt-india` | Article | Step-by-step debt exit guide |
+| `/credit-card-debt-help-india` | Article | Credit card debt strategies |
+| `/how-to-reduce-emi-burden` | Article | 7 EMI reduction strategies |
+| `/manage-multiple-loans-india` | Article | Multi-loan management guide |
+| `/debt-restructuring-india` | Article | RBI-compliant restructuring guide |
+| `/about` | Info | About ExitDebt |
+| `/privacy` | Legal | Privacy policy |
+| `/terms` | Legal | Terms & conditions |
+| `/admin/waitlist` | Admin | Admin dashboard — manage submissions |
 
 ## Admin Dashboard
 
@@ -175,12 +185,22 @@ npm test
 ```
 src/
 ├── app/
-│   ├── page.tsx                    # Homepage (grid-based view transitions)
-│   ├── layout.tsx                  # Root layout + SEO metadata + JSON-LD
+│   ├── page.tsx                    # Homepage (server component + metadata)
+│   ├── layout.tsx                  # Root layout + global SEO + JSON-LD schemas
 │   ├── globals.css                 # Design tokens (teal color scheme)
-│   ├── robots.ts                   # robots.txt (blocks /admin, /api)
-│   ├── sitemap.ts                  # sitemap.xml for Google
-│   ├── waitlist/page.tsx           # Waitlist form
+│   ├── robots.ts                   # Dynamic robots.txt
+│   ├── sitemap.ts                  # Dynamic sitemap.xml (12 routes)
+│   ├── waitlist/page.tsx           # Waitlist form (server component)
+│   ├── emi-calculator/page.tsx     # EMI savings calculator
+│   ├── debt-health-score/page.tsx  # Debt health diagnostic
+│   ├── how-to-get-out-of-debt-india/page.tsx
+│   ├── credit-card-debt-help-india/page.tsx
+│   ├── how-to-reduce-emi-burden/page.tsx
+│   ├── manage-multiple-loans-india/page.tsx
+│   ├── debt-restructuring-india/page.tsx
+│   ├── about/page.tsx
+│   ├── privacy/page.tsx
+│   ├── terms/page.tsx
 │   ├── admin/waitlist/page.tsx     # Admin dashboard
 │   ├── __tests__/
 │   │   └── waitlist-api.test.ts    # API validation & bot detection tests
@@ -193,9 +213,12 @@ src/
 ├── components/
 │   ├── Navbar.tsx
 │   ├── Footer.tsx
+│   ├── HomePageContent.tsx         # Homepage client logic (view transitions)
 │   ├── HomeContent.tsx             # Hero section
 │   ├── MarketingContent.tsx        # Features & CTA
 │   ├── WaitlistContent.tsx         # Waitlist form with validation
+│   ├── EMICalculatorContent.tsx    # EMI calculator client logic
+│   ├── DebtHealthScoreContent.tsx  # Debt health score client logic
 │   └── CookieConsent.tsx           # Cookie consent banner
 ├── lib/
 │   ├── db.ts                       # PostgreSQL pool (globalThis cached)
@@ -207,13 +230,37 @@ src/
 └── proxy.ts                        # Security headers (Next.js 16 proxy)
 ```
 
-## SEO & Crawlability
+## SEO & AEO (Answer Engine Optimization)
 
-- **sitemap.xml** — auto-generated via `src/app/sitemap.ts`
-- **robots.txt** — allows `/` and `/waitlist`, blocks `/admin/` and `/api/`
-- **JSON-LD** — structured data for Google AI answers (WebApplication schema)
-- **Open Graph + Twitter Cards** — rich link previews
-- **Canonical URLs** — via `metadataBase`
+Every page has unique metadata, canonical URLs, and OpenGraph tags for best-practice SEO.
+
+### Crawlability
+
+- **sitemap.xml** — dynamic, auto-generated via `src/app/sitemap.ts` (12 routes with priority + crawl frequency)
+- **robots.txt** — dynamic via `src/app/robots.ts` — allows public pages, blocks `/api/`, `/_next/`, `/admin/`, `/dashboard/`
+- **Canonical URLs** — set on all 13 pages via `alternates.canonical`
+
+### Structured Data (JSON-LD)
+
+| Schema | Pages | Impact |
+|---|---|---|
+| `Organization` + `FinancialService` | Root layout (global) | Brand Knowledge Panel |
+| `FAQPage` | 5 article pages + root layout | FAQ rich results in SERPs |
+| `HowTo` | 3 article pages | Step-by-step rich results |
+| `Article` | 5 article pages | Article rich results |
+| `BreadcrumbList` | 7 pages (articles + tools) | Breadcrumb trails in SERPs |
+| `WebApplication` | 2 tool pages | App rich results |
+
+### Social Sharing (OpenGraph)
+
+- All 13 pages have unique `openGraph.title` and `openGraph.description`
+- Root layout provides global OG defaults (`type: website`, `locale: en_IN`, `siteName: ExitDebt`)
+
+### AEO (AI Answer Engines)
+
+- **Stealth SEO blocks** (`sr-only` divs) on article pages — optimized for AI citation by ChatGPT, Perplexity, Google AI Overviews
+- **FAQPage schemas** — structured Q&A for AI extraction
+- **HowTo schemas** — step-by-step instructions for AI summarization
 
 ## Deployment
 
